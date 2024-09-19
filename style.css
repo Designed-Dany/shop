@@ -1,0 +1,87 @@
+body {
+	margin: 0px;
+	padding: 0px;
+}
+
+@font-face {
+	font-family: "Segoe UI";
+	src: url('./fonts/SegoeUI.woff') format("woff")
+}
+@font-face {
+	font-family: "SegoeUI-SemiBold";
+	src: url('./fonts/SegoeUI-SemiBold.woff') format("woff");
+		 
+}
+@font-face {
+	font-family: "SegoeUI-Light";
+	src: url('./fonts/SegoeUI-Light.woff') format("woff");
+}
+
+.wrapper {
+	max-width: 2440px;
+	margin: 0 auto;
+}
+
+.icon-menu {
+	height: 2px border solid;
+	width: 80%;
+}
+
+.header {
+	display: flex;
+	align-items: center;
+	background-color: #6725A8;
+	padding: 20px 20px 20px 24px;
+}
+
+.title-text {
+	color: var(--System-White, #FFF);
+	font-family: "Segoe UI";
+	font-size: 28px;
+	font-style: normal;
+	font-weight: 600;
+	line-height: 24px; 
+	font-variant: all-small-caps;
+	letter-spacing: 2px;
+}
+
+.button-menu {
+	display: flex;
+	padding: 12px 10px;
+	justify-content: center;
+	align-items: center;
+	border-radius: 8px;
+	border: 1px solid rgba(255, 255, 255, 0.45);
+}
+
+.button-menu span {
+	border: 2px solid white;
+}
+
+.search input {
+	display: flex;
+	width: 594px;
+	height: 48px;
+	padding: 0px 20px;
+	align-items: center;
+	flex: 1 0 0;
+	border-radius: 36px;
+	background: rgba(255, 255, 255, 0.20);
+	color: var(--System-White, white);
+	font-family: "Segoe UI";
+	font-size: 18px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 24px;
+	outline: none;
+	border: 0;
+	
+}
+
+input.icon {
+	background: url(./images/search-icon.png) no-repeat center left;
+}
+
+.menu-items {
+	display: flex;
+}
