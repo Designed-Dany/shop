@@ -1,6 +1,7 @@
-body {
+html, body {
 	margin: 0px;
 	padding: 0px;
+	background-color: #6725A8;
 }
 
 @font-face {
@@ -17,8 +18,13 @@ body {
 	src: url('./fonts/SegoeUI-Light.woff') format("woff");
 }
 
+@font-face {
+	font-family: "SegoeUI-Bold";
+	src: url('./fonts/SegoeUI-Bold.woff') format("woff");
+}
+
 .wrapper {
-	max-width: 2440px;
+	max-width: 1400px;
 	margin: 0 auto;
 }
 
@@ -30,44 +36,65 @@ body {
 .header {
 	display: flex;
 	align-items: center;
-	background-color: #6725A8;
-	padding: 20px 20px 20px 24px;
+
+	padding: 12px 20px 20px 24px;
 }
 
 .title-text {
 	color: var(--System-White, #FFF);
 	font-family: "Segoe UI";
-	font-size: 28px;
+	font-size: 30px;
 	font-style: normal;
 	font-weight: 600;
 	line-height: 24px; 
 	font-variant: all-small-caps;
 	letter-spacing: 2px;
+	margin: 0px 6px 4px 18px;
 }
 
-.button-menu {
-	display: flex;
-	padding: 12px 10px;
+
+.burger-menu {
+	cursor: pointer;
+	background: transparent;
+	position: relative;
 	justify-content: center;
 	align-items: center;
 	border-radius: 8px;
 	border: 1px solid rgba(255, 255, 255, 0.45);
+	width: 48px;
+  	height: 48px;
+	margin-left: 8px;
 }
 
-.button-menu span {
-	border: 2px solid white;
+.burger-menu span {
+	display: block;
+	position: absolute;
+ 	height: 4px;
+	width: 28px;
+	left: 9px;
+	top: 21px;
+	border-radius: 3px;
+	background-color: rgb(255, 255, 255);
 }
 
-.search input {
+.burger-menu span:nth-child(1) {
+	transform: translateY(-10px);
+}
+
+.burger-menu span:nth-child(2) {
+	transform: translateY(10px)
+}
+
+.search input{
 	display: flex;
-	width: 594px;
+	width: 930px;
 	height: 48px;
+	margin-left: 23px;
 	padding: 0px 20px;
 	align-items: center;
-	flex: 1 0 0;
 	border-radius: 36px;
 	background: rgba(255, 255, 255, 0.20);
-	color: var(--System-White, white);
+	color: white;
 	font-family: "Segoe UI";
 	font-size: 18px;
 	font-style: normal;
@@ -75,13 +102,81 @@ body {
 	line-height: 24px;
 	outline: none;
 	border: 0;
+}
+
+.search input::placeholder {
+	color: #FFF;
+	opacity: 0.5;
+}
+
+.search {
+	position: relative;
+}
+
+.search-icon {
+	position: absolute;
+	right: 23px;
+	top: 14px;
+	opacity: 0.5;
+}
+
+.nav-buttons {
+	display: flex;
+	position: absolute;
+	flex-wrap: nowrap;
+	align-items: center;
+	text-align: center;
+	right: 260.3px;
+	top: 13px;
+}
+
+.header-items {
+	font-family: "Segoe UI";
+	color: #FFF;
+	font-size: 13px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 16px;
+	cursor: pointer;
+}
+
+.header-items p {
+	margin: 7px;
+}
+
+.header__inner {
+	margin-right: 28px;
+}
+
+.count-basket {
+	position: absolute;
+	top: -7px;
+	right: 11px;
+	width: 15px;
+	height: 15px;
+	border-radius: 50%;
+	background-color: #F55123;
+}
+
+.main {
+	background: #FFF;
+	border-radius: 24px 24px 0px 0px;
 	
 }
 
-input.icon {
-	background: url(./images/search-icon.png) no-repeat center left;
+.main-wrapper {
+	max-width: 1400px;
+	margin: 0 auto;
 }
 
-.menu-items {
-	display: flex;
+
+
+h1 {
+	font-family: "SegoeUI-Bold";
+	font-weight: 700;
+	line-height: 36px;
+	font-size: 28px;
+	letter-spacing: -0.28px;
 }
+
+

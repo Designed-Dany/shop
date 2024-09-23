@@ -9,22 +9,41 @@
 <body>
 	<div class="wrapper">
 		<header class="header">
-			<div class="button-menu">
+
+			<button class="burger-menu">
 				<span></span>
 				<span></span>
 				<span></span>
-			</div>
+			</button>
+
 			<p class="title-text">ТОВАРЫ <br>И ТОЧКА</p>
+
 			<div class="search">
 				<input type="text" placeholder="Я ищу...">
-				<img src="images/search-icon.png" alt="search-icon">
+				<img class="search-icon" src="images/search-icon.png" alt="search-icon">
 			</div>
-			<div class="menu-items">
-				<p><img src="images/exclude-icon.png" alt="">Профиль</p>
-				<p><img src="images/basket-icon.png" alt="">Корзина</p>
-			</div>
+
+			<nav class="nav-buttons">
+				<div class="header-items header__inner">
+					<img src="images/exclude-icon.png" alt="">
+					<p>Профиль</p>
+				</div>
+				<div class="header-items">
+					<img src="images/basket-icon.png" alt="">
+					<p>Корзина</p>
+					<div class="count-basket"></div>
+				</div>
+			</nav>
 		</header>
 	</div>
+		<main class="main">
+			<div class="main-wrapper">
+				<h1>Корзина</h1>
+			</div>
+		</main>
+
+		
+	
 </body>
 <script src='main.js'></script>
 </html>
