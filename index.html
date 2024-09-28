@@ -9,15 +9,12 @@
 <body>
 	<div class="wrapper">
 		<header class="header">
-
-			<button class="burger-menu">
+			<button class="header-menu">
 				<span></span>
 				<span></span>
 				<span></span>
 			</button>
-
 			<p class="title-text">ТОВАРЫ <br>И ТОЧКА</p>
-
 			<div class="search">
 				<input type="text" placeholder="Я ищу...">
 				<img class="search-icon" src="images/search-icon.png" alt="search-icon">
@@ -37,9 +34,347 @@
 		</header>
 	</div>
 		<main class="main">
-			<div class="main-wrapper">
-				<h1>Корзина</h1>
-			</div>
+			<div class="main__container">
+					<section class="cart">
+						<h1>Корзина</h1>
+						<form class="form-cart" action="">
+							<div class="arrow__cart">
+								<div class="checkbox-cart">
+									 <input class='checkbox' type="checkbox" name="" id="">
+									 <label>Выбрать все</label>
+								</div>
+							</div>
+							<div class="cart-svg__margin">
+							<svg xmlns="http://www.w3.org/2000/svg" width="20"  viewBox="0 0 20 20" fill="none">
+								<path d="M17.3417 14.9121C16.966 15.2982 16.3477 15.3044 15.9644 14.9258L10.1418 9.17475C10.0634 9.0973 9.93715 9.09788 9.85945 9.17603L4.15281 14.9159C3.76725 15.3037 3.14293 15.3137 2.74516 14.9384C2.33549 14.552 2.32163 13.9049 2.71437 13.5012L9.28326 6.74949C9.67588 6.34593 10.3241 6.34593 10.7167 6.74949L17.3417 13.5588C17.7082 13.9355 17.7082 14.5354 17.3417 14.9121Z" fill="#9797AF"/>
+							</svg>
+							</div>
+						</form>
+						<hr>
+						<div class="products">
+							<div class="products__gap">
+							<div class="product__item">
+								<div class="product__checkboxIcon">
+									<label>
+										<input class='checkbox' type="checkbox" name="" id="">
+									</label>
+									<img width='72' src="/images/productT-shirt.png" alt="">
+								</div>
+								<div class="product__text">
+									<div class="product__title">
+										<h3>Футболка UZcotton мужская</h3>
+									</div>
+									<div class="product__subtitle">
+										<p>Цвет: белый &nbsp &nbspРазмер: 56</p>
+									</div>
+									<div class="product__info">	
+										<p>Коледино WB</p>
+										<div class="product__icon_center">
+										<p>OOO Вайлдберриз<p>
+											<svg xmlns="http://www.w3.org/2000/svg" width="20" 			height="20" viewBox="0 0 20 20" fill="none">
+												<circle cx="10" cy="10" r="7.5" stroke="#9797AF"/>
+												<path d="M9.88867 7.58691C9.62826 7.58691 9.41504 7.51042 9.24902 7.35742C9.08301 7.20117 9 7.01074 9 6.78613C9 6.55501 9.08301 6.36621 9.24902 6.21973C9.41504 6.07324 9.62826 6 9.88867 6C10.1523 6 10.3656 6.07324 10.5283 6.21973C10.6943 6.36621 10.7773 6.55501 10.7773 6.78613C10.7773 7.02051 10.6943 7.21257 10.5283 7.3623C10.3656 7.51204 10.1523 7.58691 9.88867 7.58691ZM10.6504 13.3779H9.10742V8.37793H10.6504V13.3779Z" fill="#9797AF"/>
+												</svg>
+										</div>
+									</div>
+								</div>
+								<div class="product__navigation">
+									<div class="product__button">
+										<div class="product__minus"><button>&minus;</button></div>
+										<p>1</p>
+										<div class="product__plus"><button>+</button></div>
+									</div>
+									<div class="product__leftovers"><p>Осталось 2 шт.</p></div>
+									<div class="product__savingAndDeleting">
+										<a href="#"><img src="images/trash.svg" alt=""></a>
+										<a href="#"><img src="images/favorites.svg" alt=""></a>
+									</div>
+								</div>
+								<div class="product__price price">
+									<h3>522 сом</h3>
+									<p><del>1051 сом</del></p>
+								</div>	
+							</div>
+							<div class="product__row">
+								<div class="product__item"></div>
+									<div class="product__checkboxIcon product__item_marginTop">
+										<label>
+											<input class='checkbox' type="checkbox" name="" id="">
+										</label>
+										<img width='72' src="/images/phone.png" alt="">
+									</div>
+									<div class="product__text">
+										<div class="product__title">
+											<h3>Силиконовый чехол картхолдер <br> (отверстия) для карт, прозрачный <br> кейс бампер на Apple iPhone XR,<br> MobiSafe</h3>
+										</div>
+										<div class="product__subtitle">
+											<p>Цвет: прозрачный</p>
+										</div>
+										<div class="product__info">	
+											<p>Коледино WB</p>
+											<div class="product__icon_center">
+											<p>OOO Мегапрофстиль<p>
+												<svg xmlns="http://www.w3.org/2000/svg" width="20" 			height="20" viewBox="0 0 20 20" fill="none">
+													<circle cx="10" cy="10" r="7.5" stroke="#9797AF"/>
+													<path d="M9.88867 7.58691C9.62826 7.58691 9.41504 7.51042 9.24902 7.35742C9.08301 7.20117 9 7.01074 9 6.78613C9 6.55501 9.08301 6.36621 9.24902 6.21973C9.41504 6.07324 9.62826 6 9.88867 6C10.1523 6 10.3656 6.07324 10.5283 6.21973C10.6943 6.36621 10.7773 6.55501 10.7773 6.78613C10.7773 7.02051 10.6943 7.21257 10.5283 7.3623C10.3656 7.51204 10.1523 7.58691 9.88867 7.58691ZM10.6504 13.3779H9.10742V8.37793H10.6504V13.3779Z" fill="#9797AF"/>
+													</svg>
+											</div>
+										</div>
+									</div>
+									<div class="product__navigation">
+										<div class="product__button">
+											<div class="product__minus"><button>&minus;</button></div>
+											<p>200</p>
+											<div class="product__plus"><button>+</button></div>
+										</div>
+										<div class="product__savingAndDeleting">
+											<a href="#"><img src="images/trash.svg" alt=""></a>
+											<a href="#"><img src="images/favorites.svg" alt=""></a>
+										</div>
+									</div>
+									<div class="product__price price">
+										<h4 class='product__priceSize'>2 100 047 сом</h4>
+										<p><del>2 300 047 сом</del></p>
+									</div>	
+								</div>
+								<div class="product__row">
+									<div class="product__item"></div>
+										<div class="product__checkboxIcon product__item_marginTop">
+											<label>
+											<input class='checkbox' type="checkbox" name="" id="">
+										</label>
+											<img width='72' src="/images/pencils.png" alt="">
+										</div>
+										<div class="product__text">
+											<div class="product__title">
+												<h3>Карандаши цветные Faber-Castell <br> "Замок", набор 24 цвета, <br> заточенные, шестигранные, <br> Faber-Castell</h3>
+											</div>
+											<div class="product__info">	
+												<p>Коледино WB</p>
+												<div class="product__icon_center">
+												<p>OOO Вайлдберриз<p>
+													<svg xmlns="http://www.w3.org/2000/svg" width="20" 				height="20" viewBox="0 0 20 20" <svg xmlns="http://www.w3.org/2000/svg" width="20" 			height="20" viewBox="0 0 20 20" fill="none">
+														<circle cx="10" cy="10" r="7.5" stroke="#9797AF"/>
+														<path d="M9.88867 7.58691C9.62826 7.58691 9.41504 7.51042 9.24902 7.35742C9.08301 7.20117 9 7.01074 9 6.78613C9 6.55501 9.08301 6.36621 9.24902 6.21973C9.41504 6.07324 9.62826 6 9.88867 6C10.1523 6 10.3656 6.07324 10.5283 6.21973C10.6943 6.36621 10.7773 6.55501 10.7773 6.78613C10.7773 7.02051 10.6943 7.21257 10.5283 7.3623C10.3656 7.51204 10.1523 7.58691 9.88867 7.58691ZM10.6504 13.3779H9.10742V8.37793H10.6504V13.3779Z" fill="#9797AF"/>
+														</svg>
+												</div>
+											</div>
+										</div>
+										<div class="product__navigation">
+											<div class="product__button">
+												<div class="product__minus"><button>&minus;</button></div>
+												<p>2</p>
+												<div class="product__plus"><button>+</button></div>
+											</div>
+											<div class="product__leftovers"><p>Осталось 2 шт.</p></div>
+											<div class="product__savingAndDeleting">
+												<a href="#"><img src="images/trash.svg" alt=""></a>
+												<a href="#"><img src="images/favorites.svg" alt=""></a>
+											</div>
+										</div>
+										<div class="product__price price">
+											<h3>494 сом</h3>
+											<p><del>950 сом</del></p>
+										</div>	
+									</div>
+								</div>
+
+								
+									<form class="form-cart" action="">
+										<div class="arrow__cart">
+											<div class="checkbox-cart">
+												 <p>Отсутствуют · 3 товара</p>
+											</div>
+										</div>
+										<div class="cart-svg__margin">
+										<svg xmlns="http://www.w3.org/2000/svg" width="20"  viewBox="0 0 20 20" fill="none">
+											<path d="M17.3417 14.9121C16.966 15.2982 16.3477 15.3044 15.9644 14.9258L10.1418 9.17475C10.0634 9.0973 9.93715 9.09788 9.85945 9.17603L4.15281 14.9159C3.76725 15.3037 3.14293 15.3137 2.74516 14.9384C2.33549 14.552 2.32163 13.9049 2.71437 13.5012L9.28326 6.74949C9.67588 6.34593 10.3241 6.34593 10.7167 6.74949L17.3417 13.5588C17.7082 13.9355 17.7082 14.5354 17.3417 14.9121Z" fill="#9797AF"/>
+										</svg>
+										</div>
+									</form>
+									<div class='hr'><hr></div>
+								<div class="product__hidden">
+								<div class="product__item">
+								<div class="product__checkboxIcon">
+									<img width='72' src="/images/productT-shirtGrey.png" alt="">
+								</div>
+								<div class="product__text">
+									<div class="product__title">
+										<h3>Футболка UZcotton мужская</h3>
+									</div>
+									<div class="product__subtitle">
+										<p>Цвет: белый &nbsp &nbspРазмер: 56</p>
+									</div>
+								</div>
+								<div class="product__navigation">
+									<div class="product__savingAndDeleting product__savingAndDeleting_left">
+										<a href="#"><img src="images/trash.svg" alt=""></a>
+										<a href="#"><img src="images/favorites.svg" alt=""></a>
+									</div>
+								</div>
+							</div>
+							<div class="product__row">
+								<div class="product__item"></div>
+									<div class="product__checkboxIcon">
+										<img width='72' src="/images/phoneGrey.png" alt="">
+									</div>
+									<div class="product__text">
+										<div class="product__title">
+											<h3>Силиконовый чехол картхолдер <br> (отверстия) для карт, прозрачный кейс <br> бампер на Apple iPhone XR, MobiSafe</h3>
+										</div>
+										<div class="product__subtitle">
+											<p>Цвет: прозрачный</p>
+										</div>
+									</div>
+									<div class="product__navigation">
+										<div class="product__savingAndDeleting product__savingAndDeleting_left">
+											<a href="#"><img src="images/trash.svg" alt=""></a>
+											<a href="#"><img src="images/favorites.svg" alt=""></a>
+										</div>
+									</div>
+								</div>
+								<div class="product__row">
+									<div class="product__item"></div>
+										<div class="product__checkboxIcon product__item_marginTop">
+											<img width='72' src="/images/pencilsGrey.png" alt="">
+										</div>
+										<div class="product__text">
+											<div class="product__title">
+												<h3>Карандаши цветные Faber-Castell <br> "Замок", набор 24 цвета, заточенные, <br> шестигранные,  Faber-Castell</h3>
+											</div>
+										</div>
+										<div class="product__navigation">
+											<div class="product__savingAndDeleting product__savingAndDeleting_left">
+												<a href="#"><img src="images/trash.svg" alt=""></a>
+												<a href="#"><img src="images/favorites.svg" alt=""></a>
+											</div>
+										</div>
+									</div>
+								</div>
+						</div>
+						<div class="delivery">
+							<div class="delivery__title">
+								<h2>Способ доставки</h2>
+								<button>Изменить</button>
+							</div>
+							<div class="delivery_subtitle">
+								<p class='delivery_subtitle_fontSize'>Пункт выдачи</p>
+								<div class="delivery__text">
+									<p>Бишкек, улица Ахматбека Суюмбаева, 12/1</p>
+									<p><img src="/images/star.svg" alt="">4.99 Ежедневно с 10 до 		21</p>
+								</div>
+							</div>
+							<div class="delivery__price">
+								<p class='delivery_subtitle_fontSize'>Стоимость доставки</p>
+								<p>Бесплатно</p>
+							</div>
+							<div class="delivery__dateOne date">
+								<p class='delivery_subtitle_fontSize'>5—6 февраля</p>
+								<div class="delivery__image">
+									<img src="images/productT-shirtSmall.png" alt="">
+									<img src="images/phoneSmall.png" alt="">
+									<img src="images/pencilsSmall.png" alt="">
+								</div>
+							</div>
+							<div class="delivery__dateTwo">
+								<p class='delivery_subtitle_fontSize'>7—8 февраля</p>
+								<div class="delivery__image"><img src="images/phoneSmall.png" alt=""></div>
+							</div>
+						</div>
+							
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+						
+					</section>
+					<div class="basket-counts">
+						<div class="basket-counts__title">
+							<h2>Итого</h2>
+							<h2>2 101 063 сом</h2>
+						</div>
+						<div class="basket-counts_margin">
+							<div class="basket-counts__subtitle">
+								<p>203 товара</p>
+								<p>2 302 048 сом</p>
+							</div>
+							<div class="basket-counts__subtitle">
+								<p>Скидка</p>
+								<p>−200 985 сом</p>
+							</div>
+							<div class="basket-counts__subtitle">
+								<p>Доставка</p>
+								<p>Бесплатно</p>
+							</div>
+						</div>
+						<div class="basket-counts__deliveryTitle">
+							<h4>Доставка в пункт выдачи</h4>
+							<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+								<path fill-rule="evenodd" clip-rule="evenodd" d="M13.1585 3.05991L16.9401 6.84154L6.72705 17.0546L2.73544 17.8529C2.38557 17.9229 2.07711 17.6144 2.14709 17.2646L2.94541 13.273L13.1585 3.05991ZM4.17707 13.9321L13.1585 4.95072L15.0493 6.84154L6.06789 15.8229L3.70436 16.2956L4.17707 13.9321Z" fill="#CB11AB"/>
+								<path fill-rule="evenodd" clip-rule="evenodd" d="M15.9948 7.78715L12.2132 4.00552L13.6313 2.5874C14.4145 1.8042 15.6843 1.8042 16.4675 2.5874L17.4129 3.53281C18.1961 4.31601 18.1961 5.58584 17.4129 6.36904L15.9948 7.78715ZM16.4675 5.42363C16.7286 5.16256 16.7286 4.73929 16.4675 4.47822L15.5221 3.53281C15.261 3.27174 14.8378 3.27174 14.5767 3.53281L14.104 4.00552L15.9948 5.89634L16.4675 5.42363Z" fill="#CB11AB"/>
+							</svg>
+						</div>
+						<div class="basket-counts__subtitleDeliveryTitle">
+								<p>Бишкек, улица Ахматбека Суюмбаева, 12/1</p>
+								<span class="basket-counts__subtitleColor"><p>5–8 фев</p></span>
+							<div class="basket-counts__info">
+								<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22" fill="none">
+									<path fill-rule="evenodd" clip-rule="evenodd" d="M1 10.9998C1 16.5226 5.47715 20.9998 11 20.9998C16.5228 20.9998 21 16.5226 21 10.9998C21 5.47691 16.5228 0.999756 11 0.999756C5.47715 0.999756 1 5.47691 1 10.9998ZM19.1818 10.9997C19.1818 15.5184 15.5187 19.1816 11 19.1816C6.48128 19.1816 2.81815 15.5184 2.81815 10.9997C2.81815 6.48103 6.48128 2.81791 11 2.81791C15.5187 2.81791 19.1818 6.48103 19.1818 10.9997Z" fill="url(#paint0_linear_7_2382)"/>
+									<path fill-rule="evenodd" clip-rule="evenodd" d="M6.98273 9.6548C7.40206 9.29538 8.03336 9.34394 8.39278 9.76327L10.6286 12.3717L14.6826 7.58061C15.0394 7.15901 15.6704 7.10643 16.092 7.46317C16.5136 7.81991 16.5662 8.45089 16.2094 8.8725L11.7761 14.1118C11.1795 14.817 10.0933 14.8204 9.49219 14.1191L6.87427 11.0648C6.51485 10.6455 6.56341 10.0142 6.98273 9.6548Z" fill="url(#paint1_linear_7_2382)"/>
+									<defs>
+									<linearGradient id="paint0_linear_7_2382" x1="4" y1="1.99994" x2="11" y2="20.9998" gradientUnits="userSpaceOnUse">
+									<stop stop-color="#0CD38B"/>
+									<stop offset="1" stop-color="#0CB477"/>
+									</linearGradient>
+									<linearGradient id="paint1_linear_7_2382" x1="9" y1="7.5" x2="10.5089" y2="15.8594" gradientUnits="userSpaceOnUse">
+									<stop stop-color="#0CD38B"/>
+									<stop offset="1" stop-color="#0CB477"/>
+									</linearGradient>
+									</defs>
+								</svg>
+								<p>Обратная доставка товаров на склад при отказе — <br><span class="basket-counts__infoColor">бесплатно</p></span>
+							</div>
+						</div>
+						<div class="basket-counts__payTitle">
+							<h4>Оплата картой</h4>
+							<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+								<path fill-rule="evenodd" clip-rule="evenodd" d="M13.1585 3.05991L16.9401 6.84154L6.72705 17.0546L2.73544 17.8529C2.38557 17.9229 2.07711 17.6144 2.14709 17.2646L2.94541 13.273L13.1585 3.05991ZM4.17707 13.9321L13.1585 4.95072L15.0493 6.84154L6.06789 15.8229L3.70436 16.2956L4.17707 13.9321Z" fill="#CB11AB"/>
+								<path fill-rule="evenodd" clip-rule="evenodd" d="M15.9948 7.78715L12.2132 4.00552L13.6313 2.5874C14.4145 1.8042 15.6843 1.8042 16.4675 2.5874L17.4129 3.53281C18.1961 4.31601 18.1961 5.58584 17.4129 6.36904L15.9948 7.78715ZM16.4675 5.42363C16.7286 5.16256 16.7286 4.73929 16.4675 4.47822L15.5221 3.53281C15.261 3.27174 14.8378 3.27174 14.5767 3.53281L14.104 4.00552L15.9948 5.89634L16.4675 5.42363Z" fill="#CB11AB"/>
+							</svg>
+						</div>
+						<div class="card-details">
+							<div class="card-details__icon"><img src="images/mir.png" alt=""></div>
+							<p>1234 12•• •••• 1234</p>
+						</div>
+						<div class="basket-counts__checkbox">
+							<form action="">
+								<input type="checkbox" name="" id="">
+								<label for="html">Списать оплату сразу</label>
+								<p>Спишем оплату с карты при получении</p>
+							</form>
+						</div>
+						<div class="basket-counts__pay">
+							<button class="basket-counts__button"><h4>Заказать</h4></button>
+							<div class="agreement-text">
+								<svg xmlns="http://www.w3.org/2000/svg" width="13" height="24" viewBox="0 0 13 24" fill="none">
+									<path fill-rule="evenodd" clip-rule="evenodd" d="M12.7657 4.68031L4.59586 13.4814L0.257324 8.66919L1.74276 7.32998L4.6174 10.5185L11.2999 3.31964L12.7657 4.68031Z" fill="black"/>
+								</svg>
+								<p>Соглашаюсь <span>с правилами пользования торговой площадкой</span> и <span>возврата</span></p>
+							</div>
+						</div>
+					</div>	
+			</div>	
+			
 		</main>
 
 		
