@@ -199,6 +199,8 @@ svg {
 }
 
 .count-basket {
+	display: flex;
+	align-items: center;
 	position: absolute;
 	top: -7px;
 	right: 11px;
@@ -218,8 +220,9 @@ svg {
 	max-width: 1400px;
 	margin: 0 auto;
 	display: flex;
-    flex-wrap: nowrap;
-    gap: 32px;
+  flex-wrap: nowrap;
+  gap: 32px;
+	justify-content: space-between;
 }
 
 
@@ -245,11 +248,13 @@ h2 {
 .form-cart {
 	display: flex;
 	align-items: center;
+	cursor: pointer;
 }
 
 .cart {
+	flex: 1;
 	padding: 32px 0px 0px 33px;
-	width: 66%;
+	
 }
 
 .arrow__cart {
@@ -258,14 +263,15 @@ h2 {
 }
 
 .basket-counts {
+	height: 572px;
 	width: 429px;
 	margin-top: 22px;
 	display: flex;
-	height: auto;
 	border-radius: 16px;
 	flex-direction: column;
 	box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.15), 0px 0px 1px 0px rgba(0, 0, 0, 0.30);
 	padding: 16px 24px 24px 24px;
+	background-color: #FFF;
 }
 
 .basket-counts__title {
@@ -282,11 +288,6 @@ h2 {
 	font-weight: 400;
 	line-height: 24px;
 }
-
-.checkbox-cart label {
-	margin-left: 9px;
-}
-
 
 .cart-svg__margin {
 	margin-top: 20px;
@@ -425,7 +426,6 @@ h4 {
 .agreement-text span {
 	text-decoration: underline solid rgba(0, 0, 0, 0.10);
 }
-
 
 .products__gap {
 	display: flex;
@@ -566,6 +566,10 @@ h4 {
 	margin-bottom: 60px;
 }
 
+.product__item_marginBottom {
+	margin-bottom: 40px;
+}
+
 .product__savingAndDeleting_left {
 	margin-left: 78px;
 }
@@ -619,11 +623,9 @@ h4 {
 
 .delivery__price {
 	display: flex;
-	margin-top: 16px;
-	gap: 32px;
+	margin-top: 26px;
+	gap: 28px;
 }
-
-
 
 .date {
 	margin-top: 16px;
@@ -631,18 +633,238 @@ h4 {
 
 .delivery__dateOne {
 	display: flex;
-	margin-top: 16px;
+	margin-top: 21px;
 }
 
 .delivery__dateTwo {
 	display: flex;
-	margin-top: 48px;
+	margin-top: 16px;
 }
 
 
 .delivery__image {
+	position: relative;
 	display: flex;
 	align-items: center;
 	gap: 8px;
-	margin-left: 82px;
+	margin-left: 77px;
+}
+
+.count-productPhone {
+	position: absolute;
+	width: 26px;
+	height: 16px;
+	top: -8px;
+	right: 45px;
+	background-color: #F55123;
+	border-radius: 16px;
+}
+
+.count-productPencils {
+	position: absolute;
+	top: -8px;
+	right: -5px;
+	width: 16px;
+	height: 16px;
+	background-color: #F55123;
+	border-radius: 50%;
+}
+
+.count-productPhoneTwo {
+	position: absolute;
+	top: -5px;
+	right: -6px;
+	width: 20px;
+	height: 16px;
+	background-color: #F55123;
+	border-radius: 16px;
+}
+
+
+
+.delivery-pay {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	border-radius: 16px;
+	padding: 16px 24px 24px 24px;
+	margin-top: 16px;
+	background-color: #FFF;
+}
+
+.delivery-pay__text {
+	color: #9797AF;
+	font-size: 13px;
+	line-height: 16px; 
+	margin-top: 8px;
+}
+
+.delivery-pay_margin {
+	margin-bottom: 16px;
+}
+
+
+.delivery__form {
+	position: relative;
+	margin: 16px 0px 50px 0px;
+	background-color: #FFF;
+	display: flex;
+	padding: 16px 24px 24px 24px;
+	flex-direction: column;
+	align-items: flex-start;
+	align-self: stretch;
+	border-radius: 16px;
+}
+
+.form__input {
+	border: none;
+	border-bottom: 1px solid rgba(0, 0, 0, 0.20);
+	outline: none;
+}
+
+.form__group_marginBottom {
+	margin: 43px 0px 7px 0px;
+	display: flex;
+	
+}
+
+.form__group_marginBottom input {
+	width: 338px;
+}
+
+.footer {
+	padding: 24px 0px 24px 0px;
+	font-size: 13px;
+	text-align: center;
+	color: rgba(255, 255, 255, 0.70);
+}
+
+.form__input::placeholder {
+	font-size: 16px;
+}
+
+.form__group_size input{
+	width: 217px;
+}
+
+.form__group input:nth-child(2) {
+	margin: 0px 14px 0px 24px;
+}
+
+.form__label {
+	position: absolute;
+	bottom: 6px;
+  right: 212px;
+	font-size: 12px;
+}
+
+.form__inputPhone {
+	padding-top: 40px;
+}
+
+.form__inputPhone:focus::placeholder {
+	transform: translateY(-10px);
+	font-size: 13px;
+}
+
+.checkbox {
+	display: none;
+}
+
+.custom-checkbox {
+	position: relative;
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+	background-color: #ffffff;
+	border: 1px solid #978995;
+	border-radius: 8px;
+}
+
+.custom-checkbox::before {
+	content: "";
+	position: absolute;
+	top: -1px;
+	left: -1px;
+	display: block;
+	height: 20px;
+	width: 20px;
+	border-radius: 8px;
+	background-image: url(./images/checkboxIcon.svg);
+	background-position: center;
+	background-repeat: no-repeat;
+	opacity: 0;
+	transition: .3s;
+}
+
+.checkbox:checked + .custom-checkbox::before{
+	opacity: 1;
+}
+
+.productDelivery__row {
+	display: flex;
+	flex-direction: row;
+	font-size: 13px;
+  line-height: 16px;
+  align-items: center;
+	gap: 8px;
+	margin-top: 23px;
+}
+
+.card-details_size {
+	font-size: 16px;
+	line-height: 24px;
+}
+
+.label__cart {
+	display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.transform-arrow {
+	transform: rotate(180deg);
+}
+
+.none {
+	display: none;
+}	
+
+.count-basket p {
+ position: absolute;
+ left: -3px;
+ top: -8px;
+}
+
+.quantity-items {
+	width: 40px;
+	outline: none;
+	border: none;
+	font-size: 16px;
+	padding-left: 15px;
+	background-color: white;
+	color: black;
+}
+
+.quantity-items_right {
+	outline: none;
+	border: none;
+	font-size: 16px;
+	padding-left: 8px;
+	width: 53px;
+	background-color: white;
+	color: black;
+}
+
+
+
+.product__price input {
+	outline: none;
+	border: none;
+	color: black;
+	font-size: 20px
+}
+
+.product__item_active {
+	display: flex;
 }

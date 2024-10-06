@@ -28,7 +28,9 @@
 				<div class="header-items">
 					<img src="images/basket-icon.png" alt="">
 					<p>Корзина</p>
-					<div class="count-basket"></div>
+					<div class="count-basket">
+						<p></p>
+					</div>
 				</div>
 			</nav>
 		</header>
@@ -40,8 +42,11 @@
 						<form class="form-cart" action="">
 							<div class="arrow__cart">
 								<div class="checkbox-cart">
-									 <input class='checkbox' type="checkbox" name="" id="">
-									 <label>Выбрать все</label>
+									<label class='label__cart'>
+									 <input checked class='checkbox main-checkbox' type="checkbox">
+									 <span id='checkbox' class="custom-checkbox"></span>
+									 <span class="checkbox__text">Выбрать все</span>
+									</label>
 								</div>
 							</div>
 							<div class="cart-svg__margin">
@@ -52,11 +57,12 @@
 						</form>
 						<hr>
 						<div class="products">
-							<div class="products__gap">
-							<div class="product__item">
+							<div id='products' class="products__gap">
+							<div class="product__item product__item_active">
 								<div class="product__checkboxIcon">
-									<label>
-										<input class='checkbox' type="checkbox" name="" id="">
+									<label class='label__cart'>
+										<input checked class='checkbox checkbox-child' type="checkbox" name="" id="">
+										<span class="custom-checkbox"></span>
 									</label>
 									<img width='72' src="/images/productT-shirt.png" alt="">
 								</div>
@@ -80,9 +86,13 @@
 								</div>
 								<div class="product__navigation">
 									<div class="product__button">
-										<div class="product__minus"><button>&minus;</button></div>
-										<p>1</p>
-										<div class="product__plus"><button>+</button></div>
+										<div class="product__minus">
+											<button class='minus' data-id="sdl532">&minus;</button>
+										</div>
+										<input type='number' data-oldprice="1051" data-price="522" value='1' class='quantity-items inputs' disabled></input>
+										<div class="product__plus">
+											<button class='plus' data-id="sdl532">+</button>
+										</div>
 									</div>
 									<div class="product__leftovers"><p>Осталось 2 шт.</p></div>
 									<div class="product__savingAndDeleting">
@@ -91,15 +101,17 @@
 									</div>
 								</div>
 								<div class="product__price price">
-									<h3>522 сом</h3>
-									<p><del>1051 сом</del></p>
+									<h3 class='product__price_num subtotal'>522 сом</h3>
+									<p><del class='subtotal-old'>1051 сом</del></p>
 								</div>	
 							</div>
 							<div class="product__row">
+								<div class="product__item_active">
 								<div class="product__item"></div>
 									<div class="product__checkboxIcon product__item_marginTop">
-										<label>
-											<input class='checkbox' type="checkbox" name="" id="">
+										<label class='label__cart'>
+											<input checked class='checkbox checkbox-child' type="checkbox" name="" id="">
+											<span class="custom-checkbox"></span>
 										</label>
 										<img width='72' src="/images/phone.png" alt="">
 									</div>
@@ -123,9 +135,9 @@
 									</div>
 									<div class="product__navigation">
 										<div class="product__button">
-											<div class="product__minus"><button>&minus;</button></div>
-											<p>200</p>
-											<div class="product__plus"><button>+</button></div>
+											<div  class="product__minus"><button class='minus' data-id="fkdr32">&minus;</button></div>
+											<input type='number' value='200' data-oldprice="11500.235" data-price="10500.235" class='quantity-items_right inputs' disabled></input>
+											<div class="product__plus"><button class='plus' data-id="fkdr32">+</button></div>
 										</div>
 										<div class="product__savingAndDeleting">
 											<a href="#"><img src="images/trash.svg" alt=""></a>
@@ -133,16 +145,19 @@
 										</div>
 									</div>
 									<div class="product__price price">
-										<h4 class='product__priceSize'>2 100 047 сом</h4>
-										<p><del>2 300 047 сом</del></p>
+										<h4 class='product__priceSize product__price_num subtotal'> 2 100047 сом</h4>
+										<p><del class='subtotal-old'>2 300 047 сом</del></p>
 									</div>	
 								</div>
+							</div>
 								<div class="product__row">
+								<div class="product__item_active">
 									<div class="product__item"></div>
 										<div class="product__checkboxIcon product__item_marginTop">
-											<label>
-											<input class='checkbox' type="checkbox" name="" id="">
-										</label>
+											<label class='label__cart'>
+												<input checked class='checkbox checkbox-child' type="checkbox" name="" id="">
+												<span class="custom-checkbox"></span>
+											</label>	
 											<img width='72' src="/images/pencils.png" alt="">
 										</div>
 										<div class="product__text">
@@ -162,9 +177,9 @@
 										</div>
 										<div class="product__navigation">
 											<div class="product__button">
-												<div class="product__minus"><button>&minus;</button></div>
-												<p>2</p>
-												<div class="product__plus"><button>+</button></div>
+												<div class="product__minus"><button class='minus' data-id="flsdf21">&minus;</button></div>
+												<input type='number' value='2' data-price="247" data-oldprice="475" class='quantity-items inputs' disabled></input>
+												<div class="product__plus"><button class='plus' data-id="flsdf21">+</button></div>
 											</div>
 											<div class="product__leftovers"><p>Осталось 2 шт.</p></div>
 											<div class="product__savingAndDeleting">
@@ -173,10 +188,11 @@
 											</div>
 										</div>
 										<div class="product__price price">
-											<h3>494 сом</h3>
-											<p><del>950 сом</del></p>
+											<h3 class='subtotal'>494 сом</h3>
+											<p><del class='subtotal-old'>950 сом</del></p>
 										</div>	
 									</div>
+								</div>
 								</div>
 
 								
@@ -186,7 +202,7 @@
 												 <p>Отсутствуют · 3 товара</p>
 											</div>
 										</div>
-										<div class="cart-svg__margin">
+										<div class="cart-svg__margin arrowCartMissing">
 										<svg xmlns="http://www.w3.org/2000/svg" width="20"  viewBox="0 0 20 20" fill="none">
 											<path d="M17.3417 14.9121C16.966 15.2982 16.3477 15.3044 15.9644 14.9258L10.1418 9.17475C10.0634 9.0973 9.93715 9.09788 9.85945 9.17603L4.15281 14.9159C3.76725 15.3037 3.14293 15.3137 2.74516 14.9384C2.33549 14.552 2.32163 13.9049 2.71437 13.5012L9.28326 6.74949C9.67588 6.34593 10.3241 6.34593 10.7167 6.74949L17.3417 13.5588C17.7082 13.9355 17.7082 14.5354 17.3417 14.9121Z" fill="#9797AF"/>
 										</svg>
@@ -235,7 +251,7 @@
 								</div>
 								<div class="product__row">
 									<div class="product__item"></div>
-										<div class="product__checkboxIcon product__item_marginTop">
+										<div class="product__checkboxIcon product__item_marginBottom">
 											<img width='72' src="/images/pencilsGrey.png" alt="">
 										</div>
 										<div class="product__text">
@@ -272,19 +288,69 @@
 								<p class='delivery_subtitle_fontSize'>5—6 февраля</p>
 								<div class="delivery__image">
 									<img src="images/productT-shirtSmall.png" alt="">
+									<div class="count-productPhone"></div>
+									<div class="count-productPencils"></div>
 									<img src="images/phoneSmall.png" alt="">
 									<img src="images/pencilsSmall.png" alt="">
 								</div>
 							</div>
 							<div class="delivery__dateTwo">
 								<p class='delivery_subtitle_fontSize'>7—8 февраля</p>
-								<div class="delivery__image"><img src="images/phoneSmall.png" alt=""></div>
+								
+								<div class="delivery__image">
+									<div class="count-productPhoneTwo"></div>
+									<img src="images/phoneSmall.png" alt="">
+								</div>
+							</div>
+							<div class="productDelivery__row">
+								<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" 	viewBox="0 0 22 22" fill="none">
+										<path fill-rule="evenodd" clip-rule="evenodd" d="M1 10.9998C1 16.5226 5.47715 20.9998 11 20.9998C16.5228 20.9998 21 16.5226 21 10.9998C21 5.47691 16.5228 0.999756 11 0.999756C5.47715 0.999756 1 5.47691 1 10.9998ZM19.1818 10.9997C19.1818 15.5184 15.5187 19.1816 11 19.1816C6.48128 19.1816 2.81815 15.5184 2.81815 10.9997C2.81815 6.48103 6.48128 2.81791 11 2.81791C15.5187 2.81791 19.1818 6.48103 19.1818 10.9997Z" fill="url(#paint0_linear_7_2382)"/>
+										<path fill-rule="evenodd" clip-rule="evenodd" d="M6.98273 9.6548C7.40206 9.29538 8.03336 9.34394 8.39278 9.76327L10.6286 12.3717L14.6826 7.58061C15.0394 7.15901 15.6704 7.10643 16.092 7.46317C16.5136 7.81991 16.5662 8.45089 16.2094 8.8725L11.7761 14.1118C11.1795 14.817 10.0933 14.8204 9.49219 14.1191L6.87427 11.0648C6.51485 10.6455 6.56341 10.0142 6.98273 9.6548Z" fill="url(#paint1_linear_7_2382)"/>
+										<defs>
+										<linearGradient id="paint0_linear_7_2382" x1="4" y1="1.99994" x2="11" y2="20.9998" gradientUnits="userSpaceOnUse">
+										<stop stop-color="#0CD38B"/>
+										<stop offset="1" stop-color="#0CB477"/>
+										</linearGradient>
+										<linearGradient id="paint1_linear_7_2382" x1="9" y1="7.5" x2="10.5089" y2="15.8594" gradientUnits="userSpaceOnUse">
+										<stop stop-color="#0CD38B"/>
+										<stop offset="1" stop-color="#0CB477"/>
+										</linearGradient>
+										</defs>
+									</svg>
+									<p>Обратная доставка товаров на склад при отказе — <span class="basket-counts__infoColor">бесплатно</p></span>
 							</div>
 						</div>
 							
-
-
-
+						<div class="delivery-pay">
+							<div class="delivery-pay_margin">
+								<div class="delivery__title">
+									<h2>Способ оплаты</h2>
+									<button>Изменить</button>
+								</div>
+							</div>
+							<div class="card-details card-details_size">
+								<div class="card-details__icon"><img src="images/mir.png" alt=""></div>
+								<p>1234 12•• •••• 1234 &nbsp 01/30</p>
+							</div>
+							<p class='delivery-pay__text'>Спишем оплату с карты при получении</p>
+							
+						</div>
+						
+						<form action="" class="delivery__form">
+							<div class="delivery__title">
+								<h2>Получатель</h2>
+							</div>
+							<div class="form__group form__group_marginBottom">
+									<input type='text' placeholder='Имя' class="form__input">
+									<input type='text' placeholder='Фамилия' class="form__input">
+							</div>
+							<div class="form__group form__group_size">
+								<input type='text' placeholder='Почта' class="form__input">
+								<input type='text' placeholder='Телефон' class="form__input form__inputPhone">
+								<input type='text' placeholder='ИНН' class="form__input">
+								<label class='form__label' for="">Для таможенного оформления<label>
+							</div>	
+						</form>
 
 
 
@@ -301,12 +367,12 @@
 					<div class="basket-counts">
 						<div class="basket-counts__title">
 							<h2>Итого</h2>
-							<h2>2 101 063 сом</h2>
+							<h2 class='basket__result'><span id='total-price'></span> сом</h2>
 						</div>
 						<div class="basket-counts_margin">
 							<div class="basket-counts__subtitle">
 								<p>203 товара</p>
-								<p>2 302 048 сом</p>
+								<p> <span id='sum-Old_Products'>2 302 048</span> сом</p>
 							</div>
 							<div class="basket-counts__subtitle">
 								<p>Скидка</p>
@@ -358,8 +424,11 @@
 						</div>
 						<div class="basket-counts__checkbox">
 							<form action="">
-								<input type="checkbox" name="" id="">
-								<label for="html">Списать оплату сразу</label>
+								<label class='label__cart'>
+									<input class='checkbox' type="checkbox" name="" id="">
+									<span class="custom-checkbox"></span>
+									<span class="text">Списать оплату сразу</span>
+								</label>
 								<p>Спишем оплату с карты при получении</p>
 							</form>
 						</div>
@@ -376,7 +445,9 @@
 			</div>	
 			
 		</main>
-
+		<footer class='footer'>
+			<p>© 2022  ООО «Товары и точка»</p>
+		</footer>
 		
 	
 </body>
