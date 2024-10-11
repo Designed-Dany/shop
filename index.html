@@ -89,9 +89,9 @@
 										<div class="product__minus">
 											<button class='minus' data-id="sdl532">&minus;</button>
 										</div>
-										<input type='number' data-oldprice="1051" data-price="522" value='1' class='quantity-items inputs' disabled></input>
+										<input data-valueAll="1" data-value="1" type='number' data-oldprice="1051" data-price="522" data-limited="3" value='1' class='quantity-items inputs' disabled></input>
 										<div class="product__plus">
-											<button class='plus' data-id="sdl532">+</button>
+											<button class='plus limited-quantity' data-id="sdl532">+</button>
 										</div>
 									</div>
 									<div class="product__leftovers"><p>Осталось 2 шт.</p></div>
@@ -136,7 +136,7 @@
 									<div class="product__navigation">
 										<div class="product__button">
 											<div  class="product__minus"><button class='minus' data-id="fkdr32">&minus;</button></div>
-											<input type='number' value='200' data-oldprice="11500.235" data-price="10500.235" class='quantity-items_right inputs' disabled></input>
+											<input data-value="200" data-valueAll="1" type='number' value='200' data-oldprice="11500.235" data-price="10500.235" class='quantity-items_right inputs' disabled></input>
 											<div class="product__plus"><button class='plus' data-id="fkdr32">+</button></div>
 										</div>
 										<div class="product__savingAndDeleting">
@@ -178,8 +178,8 @@
 										<div class="product__navigation">
 											<div class="product__button">
 												<div class="product__minus"><button class='minus' data-id="flsdf21">&minus;</button></div>
-												<input type='number' value='2' data-price="247" data-oldprice="475" class='quantity-items inputs' disabled></input>
-												<div class="product__plus"><button class='plus' data-id="flsdf21">+</button></div>
+												<input data-value="2" type='number' value='2' data-price="247" data-valueAll="1" data-oldprice="475"  class='quantity-items inputs' disabled></input>
+												<div class="product__plus"><button class='plus limited-quantity' data-id="flsdf21">+</button></div>
 											</div>
 											<div class="product__leftovers"><p>Осталось 2 шт.</p></div>
 											<div class="product__savingAndDeleting">
@@ -367,16 +367,16 @@
 					<div class="basket-counts">
 						<div class="basket-counts__title">
 							<h2>Итого</h2>
-							<h2 class='basket__result'><span id='total-price'></span> сом</h2>
+							<h2 class='basket__result'><span data-totalvalue='2101063' id='total-price'></span> сом</h2>
 						</div>
 						<div class="basket-counts_margin">
 							<div class="basket-counts__subtitle">
-								<p>203 товара</p>
-								<p> <span id='sum-Old_Products'>2 302 048</span> сом</p>
+								<p><span class='basket-counts__quantity'></span> товара</p>
+								<p> <span id='sum-Old_Products'></span> сом</p>
 							</div>
 							<div class="basket-counts__subtitle">
 								<p>Скидка</p>
-								<p>−200 985 сом</p>
+								<p><span class='basket-counts__discount'></span> сом</p>
 							</div>
 							<div class="basket-counts__subtitle">
 								<p>Доставка</p>
