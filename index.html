@@ -58,7 +58,7 @@
 						<hr>
 						<div class="products">
 							<div id='products' class="products__gap">
-							<div class="product__item product__item_active">
+							<div class="product__item product__item_active product__item_delete">
 								<div class="product__checkboxIcon">
 									<label class='label__cart'>
 										<input checked class='checkbox checkbox-child' type="checkbox" name="" id="">
@@ -87,7 +87,7 @@
 								<div class="product__navigation">
 									<div class="product__button">
 										<div class="product__minus">
-											<button class='minus' data-id="sdl532">&minus;</button>
+											<button class='minus limited-quantity' data-id="sdl532">&minus;</button>
 										</div>
 										<input data-valueAll="1" data-value="1" type='number' data-oldprice="1051" data-price="522" data-limited="3" value='1' class='quantity-items inputs' disabled></input>
 										<div class="product__plus">
@@ -96,7 +96,7 @@
 									</div>
 									<div class="product__leftovers"><p>Осталось 2 шт.</p></div>
 									<div class="product__savingAndDeleting">
-										<a href="#"><img src="images/trash.svg" alt=""></a>
+										<a class='product__delete_button' href="#"><img class='trash' src="images/trash.svg" alt=""></a>
 										<a href="#"><img src="images/favorites.svg" alt=""></a>
 									</div>
 								</div>
@@ -106,7 +106,7 @@
 								</div>	
 							</div>
 							<div class="product__row">
-								<div class="product__item_active">
+								<div class="product__item_active product__item_delete">
 								<div class="product__item"></div>
 									<div class="product__checkboxIcon product__item_marginTop">
 										<label class='label__cart'>
@@ -140,7 +140,7 @@
 											<div class="product__plus"><button class='plus' data-id="fkdr32">+</button></div>
 										</div>
 										<div class="product__savingAndDeleting">
-											<a href="#"><img src="images/trash.svg" alt=""></a>
+											<a class='product__delete_button' href="#"><img class='trash'src="images/trash.svg" alt=""></a>
 											<a href="#"><img src="images/favorites.svg" alt=""></a>
 										</div>
 									</div>
@@ -151,7 +151,7 @@
 								</div>
 							</div>
 								<div class="product__row">
-								<div class="product__item_active">
+								<div class="product__item_active product__item_delete">
 									<div class="product__item"></div>
 										<div class="product__checkboxIcon product__item_marginTop">
 											<label class='label__cart'>
@@ -177,13 +177,13 @@
 										</div>
 										<div class="product__navigation">
 											<div class="product__button">
-												<div class="product__minus"><button class='minus' data-id="flsdf21">&minus;</button></div>
+												<div class="product__minus"><button class='minus limited-quantity' data-id="flsdf21">&minus;</button></div>
 												<input data-value="2" type='number' value='2' data-price="247" data-valueAll="1" data-oldprice="475"  class='quantity-items inputs' disabled></input>
-												<div class="product__plus"><button class='plus limited-quantity' data-id="flsdf21">+</button></div>
+												<div class="product__plus"><button class='plus limited-quantity' data-id="flsdf21" disabled>+</button></div>
 											</div>
 											<div class="product__leftovers"><p>Осталось 2 шт.</p></div>
 											<div class="product__savingAndDeleting">
-												<a href="#"><img src="images/trash.svg" alt=""></a>
+												<a class='product__delete_button' href="#"><img class='trash'src="images/trash.svg" alt=""></a>
 												<a href="#"><img src="images/favorites.svg" alt=""></a>
 											</div>
 										</div>
@@ -199,7 +199,7 @@
 									<form class="form-cart" action="">
 										<div class="arrow__cart">
 											<div class="checkbox-cart">
-												 <p>Отсутствуют · 3 товара</p>
+												 <p class='checkbox__cart_text'>Отсутствуют · 3 товара</p>
 											</div>
 										</div>
 										<div class="cart-svg__margin arrowCartMissing">
@@ -210,7 +210,7 @@
 									</form>
 									<div class='hr'><hr></div>
 								<div class="product__hidden">
-								<div class="product__item">
+								<div class="product__item product__item_hidden">
 								<div class="product__checkboxIcon">
 									<img width='72' src="/images/productT-shirtGrey.png" alt="">
 								</div>
@@ -224,12 +224,12 @@
 								</div>
 								<div class="product__navigation">
 									<div class="product__savingAndDeleting product__savingAndDeleting_left">
-										<a href="#"><img src="images/trash.svg" alt=""></a>
+										<a class='product__delete_hidden' href="#"><img class='trash' src="images/trash.svg" alt=""></a>
 										<a href="#"><img src="images/favorites.svg" alt=""></a>
 									</div>
 								</div>
 							</div>
-							<div class="product__row">
+							<div class="product__row product__item_hidden">
 								<div class="product__item"></div>
 									<div class="product__checkboxIcon">
 										<img width='72' src="/images/phoneGrey.png" alt="">
@@ -244,12 +244,12 @@
 									</div>
 									<div class="product__navigation">
 										<div class="product__savingAndDeleting product__savingAndDeleting_left">
-											<a href="#"><img src="images/trash.svg" alt=""></a>
+											<a class='product__delete_hidden' href="#"><img class='trash' src="images/trash.svg" alt=""></a>
 											<a href="#"><img src="images/favorites.svg" alt=""></a>
 										</div>
 									</div>
 								</div>
-								<div class="product__row">
+								<div class="product__row product__item_hidden">
 									<div class="product__item"></div>
 										<div class="product__checkboxIcon product__item_marginBottom">
 											<img width='72' src="/images/pencilsGrey.png" alt="">
@@ -261,7 +261,7 @@
 										</div>
 										<div class="product__navigation">
 											<div class="product__savingAndDeleting product__savingAndDeleting_left">
-												<a href="#"><img src="images/trash.svg" alt=""></a>
+												<a class='product__delete_hidden' href="#"><img class='trash' src="images/trash.svg" alt=""></a>
 												<a href="#"><img src="images/favorites.svg" alt=""></a>
 											</div>
 										</div>
@@ -367,7 +367,7 @@
 					<div class="basket-counts">
 						<div class="basket-counts__title">
 							<h2>Итого</h2>
-							<h2 class='basket__result'><span data-totalvalue='2101063' id='total-price'></span> сом</h2>
+							<h2 class='basket__result'><span id='total-price'>0</span> сом</h2>
 						</div>
 						<div class="basket-counts_margin">
 							<div class="basket-counts__subtitle">
@@ -426,10 +426,10 @@
 							<form action="">
 								<label class='label__cart'>
 									<input class='checkbox' type="checkbox" name="" id="">
-									<span class="custom-checkbox"></span>
+									<span class="custom-checkbox checkbox__delivery"></span>
 									<span class="text">Списать оплату сразу</span>
 								</label>
-								<p>Спишем оплату с карты при получении</p>
+								<p class='checkbox__delivery_subtotal'>Спишем оплату с карты при получении</p>
 							</form>
 						</div>
 						<div class="basket-counts__pay">

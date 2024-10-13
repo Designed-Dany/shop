@@ -433,6 +433,10 @@ h4 {
 	gap: 32px;
 }
 
+.none-pointer {
+	pointer-events: none;
+}
+
 .product__row {
  display: flex;
 }
@@ -826,10 +830,6 @@ h4 {
 	transform: rotate(180deg);
 }
 
-.none {
-	display: none;
-}	
-
 .count-basket p {
  position: absolute;
  left: -3px;
@@ -868,3 +868,8 @@ h4 {
 .product__item_active {
 	display: flex;
 }
+
+
+.none {
+	display: none;
+}	

@@ -9,7 +9,8 @@ let products = document.querySelector('.products__gap'); // блок с прод
 let checkboxText = document.querySelector('.checkbox__text');
 let checkboxCart = document.getElementById('checkbox');
 let productMissing = document.querySelector('.product__hidden');
-let countBasket = document.querySelector('.count-basket p')
+let countBasketNumber = document.querySelector('.count-basket p')
+let countBasket = document.querySelector('.count-basket')
 let productNavigation = document.querySelectorAll('.product__navigation')
 
 const totalPriceWrapper = document.getElementById('total-price') // итоговое число
@@ -18,10 +19,66 @@ const sumOldProducts = document.getElementById('sum-Old_Products') // сумма
 const sumDiscount = document.querySelector(".basket-counts__discount")
 const allQuantityBasket = document.querySelector('.basket-counts__quantity');
 let arrayCart = [...document.querySelectorAll('.product__item_active')]
+let arrayHiddenCart = [...document.querySelectorAll('.product__item_hidden')];
+const productsNavigation = document.querySelectorAll('.product__navigation')
 
 function numberWithSpaces(x) {
   return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " "); // регулярка которая делит числа на разряды для удобства и читаемости больших сумм
 }
+
+const deleteProduct = () => {
+	const deleteButton = document.querySelectorAll('.product__delete_button')
+	const deleteButtonHidden = document.querySelectorAll('.product__delete_hidden')
+	deleteButton.forEach((deleteItem) => {
+		
+		deleteItem.addEventListener('click', (event) => {
+			const targetDeleteButton = event.target
+			let input = targetDeleteButton.closest('.product__item_active').querySelector(".inputs")
+			
+			if(deleteButton) {
+				targetDeleteButton.closest('.product__item_active').classList.add('none');
+
+				setTotalPrice(Number(totalPriceWrapper.dataset.value) - Number(input.dataset.price) * (input.value))
+				setOldTotalPrice(Number(sumOldProducts.dataset.value) - Number(input.dataset.oldprice) * (input.value))
+				
+				sumDiscount.textContent = numberWithSpaces((sumOldProducts.dataset.value - totalPriceWrapper.dataset.value))
+
+				arrayCart.length--; // уменьшаем длину массива с товарами
+
+				countBasketNumber.textContent = arrayCart.length;
+
+				setTotalQuantity(Number(allQuantityBasket.dataset.value) - Number(input.value))
+
+				parentCheckbox.disabled = true;
+				parentCheckbox.checked = false;
+			}
+			if (arrayCart.length == 0) {
+				countBasket.classList.add('none')
+			} 
+		})
+	}
+)
+	deleteButtonHidden.forEach((deleteHiddenItem) => {
+
+		deleteHiddenItem.addEventListener('click', (event) => {
+			const targetDeleteHiddenButton = event.target;
+			let deleteHiddenBtn = targetDeleteHiddenButton.closest('.products').querySelector('.product__delete_hidden') 
+
+			if (deleteHiddenBtn) {
+				targetDeleteHiddenButton.closest('.product__item_hidden').classList.add('none');
+				arrayHiddenCart.length--
+				document.querySelector('.checkbox__cart_text').textContent = 'Отсутствуют  · ' + arrayHiddenCart.length + " товара";
+
+			} if (arrayHiddenCart.length == 1) {
+				document.querySelector('.checkbox__cart_text').textContent = 'Отсутствует  · ' + arrayHiddenCart.length + " товар";
+			} else if (arrayHiddenCart.length == 0) {
+				document.querySelector('.checkbox__cart_text').textContent = 'Отсутствует  · ' + arrayHiddenCart.length + " товаров";
+			} 
+
+		})
+	})
+} 
+deleteProduct()
 
 const ACTION = {
 	PLUS: 'plus',
@@ -29,9 +86,7 @@ const ACTION = {
 }
 
 const getItemSubTotalPrice = (inputs) =>  Number(inputs.value) * Number(inputs.dataset.price) // сокращенная версия 
-
 const getItemOldTotalPrice = (inputs) => Number(inputs.value) * Number(inputs.dataset.oldprice)
-
 const getItemQuantityTotal = (inputs) => Number(inputs.dataset.value)
 
 // выводит основное итоговое число со всеми правками в соответстующее поле 
@@ -48,8 +103,8 @@ const setOldTotalPrice = (value) => {
 }
 
 const setTotalQuantity = (value) => {
-	allQuantityBasket.textContent = numberWithSpaces(Number(value));
-	allQuantityBasket.dataset.value = Number(value);
+	allQuantityBasket.textContent = numberWithSpaces(value);
+	allQuantityBasket.dataset.value = value;
 }
 
 
@@ -69,7 +124,6 @@ const init = () => {
 		quantityTotalCost += getItemQuantityTotal(basketItem.querySelector('.inputs'))
 		// проходимся циклом по всему массиву из трех товаров, преобразуем их в число 	после обращаемся к инпутам, а именно в value, позже умножаем также на 	значение инпутов только дата атрибута price, в котором указана его цена\
 		})
-		
 		setTotalPrice(totalCost); // ввывод обычной итовой цены
 		setOldTotalPrice(oldTotalCost); // вывод старой итоговой цены
 		setTotalQuantity(quantityTotalCost);
@@ -84,9 +138,11 @@ const init = () => {
 					totalCost += getItemSubTotalPrice(basketItem.querySelector('.inputs'))
 					oldTotalCost += getItemOldTotalPrice(basketItem.querySelector('.inputs'))
 					quantityTotalCost += getItemQuantityTotal(basketItem.querySelector('.inputs'))
-					// проходимся циклом по всему массиву из трех товаров, преобразуем их в число 	после обращаемся к инпутам, а именно в value, позже умножаем также на 	значение инпутов только дата атрибута price, в котором указана его цена
+					// проходимся циклом по всему массиву из трех товаров, преобразуем их в число после обращаемся
+					//к инпутам, а именно в value, позже умножаем также на 	значение инпутов только дата атрибута price, в котором указана его цена
+
 					arrayCart = [...document.querySelectorAll('.product__item_active')] // изначально там лежат 3 товара
-					countBasket.textContent = arrayCart.length;
+					countBasketNumber.textContent = arrayCart.length;
 					})
 					document.querySelectorAll(".minus").forEach((minusItem) => {
 						minusItem.disabled = false;
@@ -94,17 +150,30 @@ const init = () => {
 					document.querySelectorAll(".plus").forEach((plusItem) => {
 						plusItem.disabled = false;
 					})
+					
+					// countBasket.classList.remove('none')
+					deleteCountBasket();
+
+					const defaultButtonBlocked = document.querySelectorAll('.plus')
+					defaultButtonBlocked[defaultButtonBlocked.length - 1].disabled = true; // последний плюс на нем должен быть изначально disabled
+					//, так как там уже 2 продукта выбрана
 			} else {
 					childCheckboxs[i].checked = false;
 				 	totalCost = 0; // ввывод обычной итовой цены
 				 	oldTotalCost = 0; // вывод старой итоговой цены
 				 	quantityTotalCost = 0;
-				 	sumDiscount.textContent = '-' + numberWithSpaces(totalCost - oldTotalCost)  //вывод разницы между старой и новой ценой
-				 	sumOldProducts.textContent = 0;
-				 	totalPriceWrapper.textContent = 0;
-				 	countBasket.textContent = arrayCart.length - arrayCart.length;
+				 	sumDiscount.textContent = numberWithSpaces(totalCost - oldTotalCost)  //вывод разницы между старой и новой ценой
+
+				 	sumOldProducts.textContent = setOldTotalPrice(sumOldProducts.dataset.value - sumOldProducts.dataset.value);
+
+				 	totalPriceWrapper.textContent = setTotalPrice(totalPriceWrapper.dataset.value - totalPriceWrapper.dataset.value);
+
+				 	countBasketNumber.textContent = arrayCart.length - arrayCart.length;
 				 	arrayCart = []; // при клике на главный чекбокс массив становится пустой.
-				 	allQuantityBasket.textContent = 0;
+
+					deleteCountBasket();
+
+				 	allQuantityBasket.textContent = setTotalQuantity(Number(allQuantityBasket.dataset.value) - Number(allQuantityBasket.dataset.value)) 
 					document.querySelectorAll(".minus").forEach((minusItem) => {
 						minusItem.disabled = true;
 					})
@@ -119,6 +188,7 @@ const init = () => {
 		selectCheckBox()
 	})		
 		
+		
 	// проверяет если убрал дочерний чекбокс то активность главного меняется на false, когда чекбокс false то, нужно высчитывать из корзины количество, сумму, старую сумму.
 	function checkCheckbox() {
 		
@@ -129,40 +199,42 @@ const init = () => {
 			 
 				let input = targetCheckbox.closest('.product__item_active').querySelector(".inputs")
 
+				
+
 				if (childCheckboxs[i].checked == false) {
 					parentCheckbox.checked = false;
 					// здесь веду работу над вычислением при нажатии чекбокса и снятии
 
 					setTotalPrice(Number(totalPriceWrapper.dataset.value) - Number(input.dataset.price) * (input.value))
-
 					setOldTotalPrice(Number(sumOldProducts.dataset.value) - Number(input.dataset.oldprice) * (input.value))
 
 					sumDiscount.textContent = ' -' + numberWithSpaces((sumOldProducts.dataset.value - totalPriceWrapper.dataset.value))	
 					
 					arrayCart.length--; // уменьшаем длину массива с товарами
-					countBasket.textContent = arrayCart.length;
+					countBasketNumber.textContent = arrayCart.length;
 
-					allQuantityBasket.textContent = allQuantityBasket.dataset.value -= input.value
+					setTotalQuantity(Number(allQuantityBasket.dataset.value) - Number(input.value))
 
 					targetCheckbox.closest('.product__item_active').querySelector(".minus").disabled = true
-
 					targetCheckbox.closest('.product__item_active').querySelector(".plus").disabled = true
 					
 				} else {
-					
 					setTotalPrice(Number(totalPriceWrapper.dataset.value) + Number(input.dataset.price) * (input.value))
-
 					setOldTotalPrice(Number(sumOldProducts.dataset.value) + Number(input.dataset.oldprice) * (input.value))
 
 					sumDiscount.textContent = ' -' + numberWithSpaces((sumOldProducts.dataset.value - totalPriceWrapper.dataset.value))
-
+					
 					arrayCart.length++; // увеличиваем длину массива с товарами
-					countBasket.textContent = arrayCart.length;
+					countBasketNumber.textContent = arrayCart.length;
+					
+					setTotalQuantity(Number(allQuantityBasket.dataset.value) + Number(input.value))
 
 					targetCheckbox.closest('.product__item_active').querySelector(".minus").disabled = false
 					targetCheckbox.closest('.product__item_active').querySelector(".plus").disabled = false
 				}
-				 
+
+				deleteCountBasket()
+
 			})
 		}
 	}
@@ -172,6 +244,14 @@ const init = () => {
 
 selectCheckBox()
 checkCheckbox()
+}
+
+const deleteCountBasket = () => {
+	if (arrayCart.length == 0) {
+		countBasket.classList.add('none')
+	} else {
+		countBasket.classList.remove('none')
+	}
 }
 
 // подсчет корзины по кнопке "+" и "-"
@@ -185,31 +265,27 @@ const calculateSeparateItem = (basketItem, action) => {
 		case ACTION.PLUS: // обращаемся к объекту действие: плюс
 			input.value++; // увеливаем значение value на один
 			allQuantityBasket.dataset.value++ // увеличиваем количество товаров на один
+			
 			setTotalPrice(Number(totalPriceWrapper.dataset.value) + Number(input.dataset.price))
-
 			setOldTotalPrice(Number(sumOldProducts.dataset.value) + Number(input.dataset.oldprice))
 			
 			allQuantityBasket.textContent = Number(allQuantityBasket.dataset.value) // вывод итога в спан 
-			
-			sumDiscount.textContent = ' -' + numberWithSpaces((sumOldProducts.dataset.value - totalPriceWrapper.dataset.value))
+			sumDiscount.textContent = ' -' + numberWithSpaces(Math.round(sumOldProducts.dataset.value - totalPriceWrapper.dataset.value))
 			break; // заканчиваем проверку
 
 		case ACTION.MINUS: // обращаемся к объекту действие: минус
 			input.value--; // уменьшаем значение value на один
 			allQuantityBasket.dataset.value-- // уменьшаем количество товаров на один
-			setTotalPrice(Number(totalPriceWrapper.dataset.value) - Number(input.dataset.price))
 
+			setTotalPrice(Number(totalPriceWrapper.dataset.value) - Number(input.dataset.price))
 			setOldTotalPrice(Number(sumOldProducts.dataset.value) - Number(input.dataset.oldprice))
 
 			allQuantityBasket.textContent = Number(allQuantityBasket.dataset.value) // вывод итога в спан
-
-			sumDiscount.textContent = ' -' + numberWithSpaces(sumOldProducts.dataset.value - totalPriceWrapper.dataset.value)
-			
+			sumDiscount.textContent = ' -' + numberWithSpaces(Math.round(sumOldProducts.dataset.value - totalPriceWrapper.dataset.value))
 			break; // заканчиваем проверку
 	}
 
 	basketItem.querySelector('.subtotal').textContent = numberWithSpaces(Math.round(getItemSubTotalPrice(input))) + " сом" // вывод подытога обычной цены
-
 	basketItem.querySelector('.subtotal-old').textContent = numberWithSpaces(Math.round(getItemOldTotalPrice(input))) + " сом" // вывод подытога старой цены
 }
 
@@ -223,10 +299,13 @@ products.addEventListener('click', (event) => {
 	 // ищет родителя
 	}
 
-	if (targetProduct.classList.contains('limited-quantity')) {
-		console.log('hekkoi');
-		
+	if (targetProduct.classList.contains('limited-quantity')) {	
+		if (input.value == 2) {
+			targetProduct.closest('.product__item_active').querySelector(".plus").disabled = true;
+		} 
 	}
+
+	// если у ограниченных продуктов количество равно 2 то блочить кнопку добавление, если изначально стоит 2 также блочить кнопку, а если меньше двух то давать доступ к ней.
 
 	if (targetProduct.classList.contains('minus')) {
 		
@@ -236,6 +315,9 @@ products.addEventListener('click', (event) => {
 				ACTION.MINUS
 			)
 		}
+		if (input.value <= 1){
+			targetProduct.closest('.product__item_active').querySelector(".plus").disabled = false;
+		 }
 	}
 })
 
@@ -299,7 +381,20 @@ arrowCartMissing.addEventListener('click', () => {
 	}
 })
 
+
+	// const checkboxDelivery = document.querySelector('.checkbox__delivery')
+	// const checkboxSubtotal = document.querySelector('.checkbox__delivery_subtotal')
+	
+	// checkboxDelivery.addEventListener('click', () => {
+	// 	if (checkboxDelivery.checked == true) {
+	//  	 checkboxSubtotal.classList.add('none')
+	//  	console.log('hello');
+	//  }
+	// })
+
+	 
+	
+
+
 // когда мы нажимаем на минус или плюс элемента, мы должны подняться до родителя и внутри него уже искать количество, цену, подсумму и тд.
-
-
 init();
