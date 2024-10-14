@@ -99,7 +99,6 @@ html, body {
 	margin: 0px 6px 4px 18px;
 }
 
-
 .header-menu {
 	cursor: pointer;
 	background: transparent;
@@ -225,8 +224,6 @@ svg {
 	justify-content: space-between;
 }
 
-
-
 h1 {
 	font-family: "SegoeUI-Bold";
 	font-weight: 700;
@@ -293,7 +290,6 @@ h2 {
 	margin-top: 20px;
 }
 
-
 .basket-counts__subtitle {
 	display: flex;
 	justify-content: space-between;
@@ -348,10 +344,10 @@ h4 {
 	gap: 8px;
 }
 
-
 .basket-counts__infoColor {
 	color: #0CB477;
 	text-decoration: underline dashed #0CB477;
+	cursor: pointer;
 }
 
 .basket-counts__payTitle {
@@ -390,11 +386,9 @@ h4 {
 	
 }
 
-
 .basket-counts__checkbox p {
 	margin-top: 11px;
 }
-
 
 .basket-counts__button {
 	cursor: pointer;
@@ -445,7 +439,6 @@ h4 {
 	display: flex;
 	flex-direction: row;
 }
-
 
 .product__text {
 	display: flex;
@@ -510,7 +503,6 @@ h4 {
 	line-height: 24px;
 	letter-spacing: -0.2px;
 }
-
 
 .product__minus {
 	width: 24px;
@@ -645,7 +637,6 @@ h4 {
 	margin-top: 16px;
 }
 
-
 .delivery__image {
 	position: relative;
 	display: flex;
@@ -683,8 +674,6 @@ h4 {
 	background-color: #F55123;
 	border-radius: 16px;
 }
-
-
 
 .delivery-pay {
 	width: 100%;
@@ -856,8 +845,6 @@ h4 {
 	color: black;
 }
 
-
-
 .product__price input {
 	outline: none;
 	border: none;
@@ -869,6 +856,112 @@ h4 {
 	display: flex;
 }
 
+.product__block_parent {
+	position: relative;
+}
+
+.product__block_info {
+	padding: 11px 16px 13px 16px;
+	gap: 8px;
+	display: flex;
+	flex-direction: column;
+	width: 280px;
+	height: 104px;
+	background-color: #FFF;
+	box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.15), 0px 0px 1px 0px rgba(0, 0, 0, 0.30);
+	border-radius: 10px;
+}
+
+.product__block_header {
+	font-family: "SegoeUI-Bold";
+	font-size: 13px;
+	line-height: 16px;
+	font-weight: 900;
+	color: black;
+}
+
+.product__block_subtotal {
+	font-size: 13px;
+	line-height: 16px;
+	color: black;
+}
+
+.product__block_parent div:nth-child(1) {
+	position: absolute;
+	top: 10px;
+	left: -140px;
+	z-index: 10;
+}
+
+.product-block__discount_parent {
+	position: relative;
+	
+}
+
+.product-block_discount {
+	position: absolute;
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+	padding: 11px 16px 13px 16px;
+	width: 239px;
+	font-size: 13px;
+	background-color: #FFF;
+	box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.15), 0px 0px 1px 0px rgba(0, 0, 0, 0.30);
+	border-radius: 8px;
+	top: 52px;
+	left: -230px;
+}
+
+
+.product-block__item {
+	display: flex;
+	justify-content: space-between;
+}
+
+.product-block__item p:nth-child(1) {
+	color: #A0A0A4;
+}
+
+.subtotal-old {
+	cursor: pointer;
+}
+
+.basket__block_parent {
+	position: relative;
+}
+
+.basket__block_second {
+	position: absolute;
+	top: 10px;
+	left: -180px;
+}
+
+.basket__block_info {
+	position: absolute;
+	background-color: #FFF;
+	width: 288px;
+	padding: 10px 16px 14px 16px;
+	box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.15), 0px 0px 1px 0px rgba(0, 0, 0, 0.30);
+	border-radius: 8px;
+	z-index: 10;
+}
+
+.trash {
+	transition: all .5s ease;
+}
+
+.favorites {
+	transition: all .5s ease;
+}
+
+.trash:hover {
+	fill: red;
+}
+
+.favorites:hover {
+	fill: rgb(230, 66, 217)
+}
 
 .none {
 	display: none;

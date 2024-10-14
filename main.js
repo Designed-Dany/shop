@@ -30,7 +30,7 @@ const deleteProduct = () => {
 	const deleteButton = document.querySelectorAll('.product__delete_button')
 	const deleteButtonHidden = document.querySelectorAll('.product__delete_hidden')
 	deleteButton.forEach((deleteItem) => {
-		
+
 		deleteItem.addEventListener('click', (event) => {
 			const targetDeleteButton = event.target
 			let input = targetDeleteButton.closest('.product__item_active').querySelector(".inputs")
@@ -381,20 +381,99 @@ arrowCartMissing.addEventListener('click', () => {
 	}
 })
 
+const hiddenPaymentImmediately = () => {
+	const checkboxDelivery = document.querySelector('.checkbox__delivery')
+	const checkboxSubtotal = document.querySelector('.checkbox__delivery_subtotal')
+	const buttonBuy = document.querySelector('.basket-counts__button_buy')
 
-	// const checkboxDelivery = document.querySelector('.checkbox__delivery')
-	// const checkboxSubtotal = document.querySelector('.checkbox__delivery_subtotal')
-	
-	// checkboxDelivery.addEventListener('click', () => {
-	// 	if (checkboxDelivery.checked == true) {
-	//  	 checkboxSubtotal.classList.add('none')
-	//  	console.log('hello');
-	//  }
-	// })
-
+	checkboxDelivery.addEventListener('click', () => {
+		if (checkboxDelivery.checked == true) {
+	 	  checkboxSubtotal.classList.add('none')
+			 buttonBuy.textContent = ` Оплатить ${numberWithSpaces(totalPriceWrapper.dataset.value)} сом` 
 	 
+	} else {
+		checkboxSubtotal.classList.remove('none')
+		buttonBuy.textContent = 'Заказать'
+	}
+	})
+
+}
+hiddenPaymentImmediately();
+	 
+
+
+// Показывает информацию о компании которая производит продукт при фокусе на значок инфо
+const showInfoBlock = () => {
+	const infoButton = document.querySelectorAll('.product__info_button')
 	
+	infoButton.forEach((infoItem) => {
+		infoItem.addEventListener('mouseover', (event) => {
+			let currentTarget = event.target
+			
+			if (currentTarget.classList.contains('product__info_button')) {
+				
+				currentTarget.closest('.product__item_active').querySelector('.product__block_info').classList.remove('none')
 
+			} 
+		})
+		infoItem.addEventListener('mouseout', (event) => {
+			let currentTarget = event.target
 
-// когда мы нажимаем на минус или плюс элемента, мы должны подняться до родителя и внутри него уже искать количество, цену, подсумму и тд.
+			if (currentTarget.classList.contains('product__info_button')) {
+				
+				currentTarget.closest('.product__item_active').querySelector('.product__block_info').classList.add('none')
+
+			} 
+		})
+	})
+}
+showInfoBlock()
+// Показывает информацию о cкидке при фокусе на ценую без скидки
+const showInfoBlockDiscount = () => {
+	const infoButtonDiscount = document.querySelectorAll('.subtotal__discount');
+
+	infoButtonDiscount.forEach((itemDiscount) => {
+		itemDiscount.addEventListener('mouseover', (event) => {
+			let currentTarget = event.target;
+
+			if (currentTarget.classList.contains('subtotal__discount')) {
+				currentTarget.closest('.product__item_active').querySelector('.product-block_discount').classList.remove('none')
+			} 
+			
+		})
+		itemDiscount.addEventListener('mouseout', (event) => {
+			let currentTarget = event.target;
+
+			if (currentTarget.classList.contains('subtotal__discount')) {
+				currentTarget.closest('.product__item_active').querySelector('.product-block_discount').classList.add('none')
+			} 
+		})
+	})
+}
+showInfoBlockDiscount()
+
+const showInfoBlockDelivery = () => {
+	const infoTextDelivery = document.querySelectorAll('.basket-counts__infoColor');
+	
+	infoTextDelivery.forEach((itemText) => {
+		itemText.addEventListener('mouseover', (event) => {
+			let currentTarget = event.target;
+
+			if (currentTarget.classList.contains('basket-counts__infoColor')) {
+				currentTarget.closest('.delivery-info').querySelector('.basket__block_info').classList.remove('none')
+			} 
+		})
+			itemText.addEventListener('mouseout', (event) => {
+				let currentTarget = event.target;
+			
+				if (currentTarget.classList.contains('basket-counts__infoColor')) {
+					currentTarget.closest('.delivery-info').querySelector('.basket__block_info').classList.add('none')
+				} 
+			})
+	})
+	
+	
+}
+
+showInfoBlockDelivery()
 init();
