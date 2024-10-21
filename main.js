@@ -21,6 +21,18 @@ const allQuantityBasket = document.querySelector('.basket-counts__quantity');
 let arrayCart = [...document.querySelectorAll('.product__item_active')]
 let arrayHiddenCart = [...document.querySelectorAll('.product__item_hidden')];
 const productsNavigation = document.querySelectorAll('.product__navigation')
+const deliveryPayPoint = document.querySelector('.delivery__pay_pointBtn') // кнопка способа доставки курьером
+const deliveryPayDeliveryMan = document.querySelector('.delivery__pay_deliveryman') // кнопка способа доставки в пункт выдачи
+const pointContent = document.querySelector('.delivery__point_content') // контент с пунктом выдачи
+const payContent = document.querySelector('.delivery__pay_content') // контент с курьером
+
+const outputText = document.querySelector('.delivery_subtitle_fontSize')
+const outputDeliveryText = document.querySelector('.delivery__text')
+const outputBasket = document.querySelector('.basket_subtitle');
+let checkboxRadio = document.querySelectorAll('.delivery__input')
+const outputBasketCount = document.querySelector('.basket-counts_output')
+const deliveryDelete = document.querySelectorAll('.delivery__delete')
+
 
 function numberWithSpaces(x) {
   return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " "); // регулярка которая делит числа на разряды для удобства и читаемости больших сумм
@@ -30,7 +42,7 @@ const deleteProduct = () => {
 	const deleteButton = document.querySelectorAll('.product__delete_button')
 	const deleteButtonHidden = document.querySelectorAll('.product__delete_hidden')
 	deleteButton.forEach((deleteItem) => {
-
+		
 		deleteItem.addEventListener('click', (event) => {
 			const targetDeleteButton = event.target
 			let input = targetDeleteButton.closest('.product__item_active').querySelector(".inputs")
@@ -63,7 +75,7 @@ const deleteProduct = () => {
 		deleteHiddenItem.addEventListener('click', (event) => {
 			const targetDeleteHiddenButton = event.target;
 			let deleteHiddenBtn = targetDeleteHiddenButton.closest('.products').querySelector('.product__delete_hidden') 
-
+			
 			if (deleteHiddenBtn) {
 				targetDeleteHiddenButton.closest('.product__item_hidden').classList.add('none');
 				arrayHiddenCart.length--
@@ -151,7 +163,6 @@ const init = () => {
 						plusItem.disabled = false;
 					})
 					
-					// countBasket.classList.remove('none')
 					deleteCountBasket();
 
 					const defaultButtonBlocked = document.querySelectorAll('.plus')
@@ -305,6 +316,8 @@ products.addEventListener('click', (event) => {
 		} 
 	}
 
+
+	
 	// если у ограниченных продуктов количество равно 2 то блочить кнопку добавление, если изначально стоит 2 также блочить кнопку, а если меньше двух то давать доступ к ней.
 
 	if (targetProduct.classList.contains('minus')) {
@@ -428,6 +441,7 @@ const showInfoBlock = () => {
 	})
 }
 showInfoBlock()
+
 // Показывает информацию о cкидке при фокусе на ценую без скидки
 const showInfoBlockDiscount = () => {
 	const infoButtonDiscount = document.querySelectorAll('.subtotal__discount');
@@ -471,9 +485,257 @@ const showInfoBlockDelivery = () => {
 				} 
 			})
 	})
+}
+showInfoBlockDelivery()
+
+const showDeliveryModal = () => {
+	const buttonOpenModal = document.querySelectorAll('.delivery__modal_open')
+	const modalWindow = document.querySelector('.delivery__pay_modal')
+	const closeModalWindow = document.querySelector('.modal-close')
+
+	buttonOpenModal.forEach((buttonItem) => {
+		buttonItem.addEventListener("click", () => {
+		
+			if (modalWindow.classList.contains('none')) {
+				modalWindow.classList.remove('none');
+				document.querySelector('.delivery__pay_background').classList.remove('none')
+			}
+			closeModalWindow.addEventListener('click', (event) => {
+				let targetCurrent = event.target
 	
-	
+				if (targetCurrent.classList.contains('modal-close')) {
+					modalWindow.classList.add('none');
+					document.querySelector('.delivery__pay_background').classList.add('none')
+				}
+			})
+		})
+	})
+}
+showDeliveryModal();
+
+activePoint = () => {
+	deliveryPayDeliveryMan.classList.remove('active')
+	deliveryPayPoint.classList.add('active')
+	pointContent.classList.remove('none')
+	payContent.classList.add('none')
+
+	// сбрасывает блокировку кнопок удаления
+	deliveryDelete.forEach((deliveryDelete) => {
+		deliveryDelete.disabled = false;
+	})
 }
 
-showInfoBlockDelivery()
+activePay = () => {
+	deliveryPayDeliveryMan.classList.add('active')
+	deliveryPayPoint.classList.remove('active')
+	payContent.classList.remove('none')
+	pointContent.classList.add('none')	
+}
+
+const selectButton = () => {
+
+	checkboxRadio.forEach((radioItem) => {
+		// изначальные значения выбора способа доставки
+	if (deliveryPayDeliveryMan.classList.contains('active')) {
+		pointContent.classList.add('none')
+	} else {
+		pointContent.classList.remove('none')
+	}
+
+	deliveryPayPoint.addEventListener('click', () => {	
+		activePoint()
+		radioItem.checked = false
+	})
+
+	deliveryPayDeliveryMan.addEventListener('click', () => {
+		activePay()
+		radioItem.checked = false
+	})
+	})
+}
+selectButton();
+
+const blockButtonDelete = () => {
+	checkboxRadio.forEach((radioItem) => {
+
+		radioItem.addEventListener('click', (event) => {
+			let target = event.target
+			
+			deliveryDelete.forEach((deliveryDelete) => {
+				deliveryDelete.disabled = false;
+			})
+
+			if (radioItem.checked == true) {
+				target.closest('.delivery__item').querySelector('.delivery__delete').disabled = true;
+				} 
+			})
+		})
+}
+blockButtonDelete()
+
+// после того как я нажал на кнопку "Выбрать" все что я нажимал до этого должно отобразиться в соответстующих местах
+const selectAddress = () => {
+
+	checkboxRadio.forEach((radioItem) => {
+		const resultSelectPay = document.querySelector('.delivery__pay_result');
+		const resultSelectPoint = document.querySelector('.delivery__point_result');
+		const starIconDeliveryText = document.createElement('img')
+		starIconDeliveryText.src += radioItem.dataset.img // вывод звезды в способе оплаты
+		starIconDeliveryText.width = 12;
+		starIconDeliveryText.height = 12;
+		const outputSubtotal = document.querySelector('.delivery__subtotal')
+		// контролирует выбор на способе доставки курьером
+		resultSelectPay.addEventListener('click', () => {
+
+		if (radioItem.checked == true) {
+			outputDeliveryText.textContent = radioItem.dataset.text
+			outputBasketCount.textContent = radioItem.dataset.text
+			outputSubtotal.innerHTML = ''
+		}
+
+		outputText.textContent = "Доставит курьер"
+		outputBasket.textContent = "Доставка курьером"
+		document.querySelector('.delivery__pay_modal').classList.add('none')
+		document.querySelector('.delivery__pay_background').classList.add('none')
+
+	})
+
+// контролирует выбор на способе доставки пункт выдачи
+	resultSelectPoint.addEventListener('click', () => {
+	
+		if (radioItem.checked == true) {
+			outputDeliveryText.textContent = radioItem.dataset.text 
+			outputSubtotal.innerHTML = ` <img src="./images/star.svg"> ` + radioItem.dataset.rating + " Ежедневно с 10 до 21 "
+			outputBasketCount.textContent = radioItem.dataset.text 
+		} 
+		
+		outputText.textContent = "В пункт выдачи"
+		outputBasket.textContent = "Доставка в пункт выдачи"
+		document.querySelector('.delivery__pay_modal').classList.add('none')
+		document.querySelector('.delivery__pay_background').classList.add('none')
+
+	})
+})
+}
+selectAddress()
+
+const deliveryItemDelete = () => {
+	const buttonsPayDelete = document.querySelectorAll('.delivery__delete')
+	buttonsPayDelete.forEach((payDeleteItem) => {
+		
+		payDeleteItem.addEventListener('click', (event) => {
+			let target = event.target
+			let deliveryItem = target.closest('.delivery__parent').querySelector('.delivery__delete')
+			if(deliveryItem) {
+				target.closest('.delivery__item').classList.add('none')
+			} 
+		})
+	})
+}
+deliveryItemDelete();
+
+const showCardModal = () => {
+
+	const buttonCardOpen = document.querySelectorAll('.delivery__card_open')
+	const modalCardWindow = document.querySelector('.delivery__card_modal')
+	const closeModalCardWindow = document.querySelector('.modal-card_close')
+
+	buttonCardOpen.forEach((buttonItem) => {
+		buttonItem.addEventListener("click", () => {
+		
+			if (modalCardWindow.classList.contains('none')) {
+				modalCardWindow.classList.remove('none');
+				document.querySelector('.delivery__card_background').classList.remove('none')
+			}
+		})
+	 })
+
+	 closeModalCardWindow.addEventListener('click', (event) => {
+		let targetCurrent = event.target
+
+		if (targetCurrent.classList.contains('modal-card_close')) {
+			modalCardWindow.classList.add('none');
+			document.querySelector('.delivery__card_background').classList.add('none')
+		}
+	})
+	
+}
+showCardModal()
+
+
+selectCardInput = () => {
+	const cardInput = document.querySelectorAll('.delivery__card_input')
+	const outputCard = document.querySelectorAll('.card-details')
+	const cardIcon = document.createElement('img')
+	 // вывод звезды в способе оплаты
+
+	cardInput.forEach((cardItem) => {
+		outputCard.forEach((outputItem) => {
+		cardIcon.src = cardItem.dataset.img
+		
+		const resultSelectCard = document.querySelector('.delivery__card_result');
+		
+		
+		// контролирует выбор на способе доставки курьером
+		resultSelectCard.addEventListener('click', () => {
+		
+		if (cardItem.checked) {
+			outputItem.innerHTML = `<img src="${cardItem.dataset.img}">` + cardItem.dataset.text 
+		}
+
+		document.querySelector('.delivery__card_modal').classList.add('none')
+		document.querySelector('.delivery__card_background').classList.add('none')
+
+	})
+})
+	})
+}
+
+selectCardInput()
+
+// checkboxRadio.forEach((radioItem) => {
+// 	const resultSelectPay = document.querySelector('.delivery__pay_result');
+// 	const resultSelectPoint = document.querySelector('.delivery__point_result');
+// 	const starIconDeliveryText = document.createElement('img')
+// 	starIconDeliveryText.src += radioItem.dataset.img // вывод звезды в способе оплаты
+// 	starIconDeliveryText.width = 12;
+// 	starIconDeliveryText.height = 12;
+// 	const outputSubtotal = document.querySelector('.delivery__subtotal')
+// 	// контролирует выбор на способе доставки курьером
+// 	resultSelectPay.addEventListener('click', () => {
+
+// 	if (radioItem.checked == true) {
+// 		outputDeliveryText.textContent = radioItem.dataset.text
+// 		outputBasketCount.textContent = radioItem.dataset.text
+// 		outputSubtotal.innerHTML = ''
+// 	}
+
+// 	outputText.textContent = "Доставит курьер"
+// 	outputBasket.textContent = "Доставка курьером"
+// 	document.querySelector('.delivery__pay_modal').classList.add('none')
+// 	document.querySelector('.delivery__pay_background').classList.add('none')
+
+// })
+
+// // контролирует выбор на способе доставки пункт выдачи
+// resultSelectPoint.addEventListener('click', () => {
+
+// 	if (radioItem.checked == true) {
+// 		outputDeliveryText.textContent = radioItem.dataset.text 
+// 		outputSubtotal.innerHTML = ` <img src="./images/star.svg"> ` + radioItem.dataset.rating + " Ежедневно с 10 до 21 "
+// 		outputBasketCount.textContent = radioItem.dataset.text 
+// 	} 
+	
+// 	outputText.textContent = "В пункт выдачи"
+// 	outputBasket.textContent = "Доставка в пункт выдачи"
+// 	document.querySelector('.delivery__pay_modal').classList.add('none')
+// 	document.querySelector('.delivery__pay_background').classList.add('none')
+
+// })
+// })
+
+
 init();
+
+// получить каждый инпут у доставки курьером и пункт выдачи, а также адреса и удаление
+// при нажатии определенную радио кнопку меняется контент

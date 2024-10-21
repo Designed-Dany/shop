@@ -583,6 +583,7 @@ h4 {
 }
 
 .delivery {
+	position: relative;
 	display: flex;
 	flex-direction: column;
 	width: 100%;
@@ -614,7 +615,7 @@ h4 {
 .delivery_subtitle {
 	display: flex;
 	margin-top: 16px;
-	gap: 78px;
+	gap: 55px;
 }
 
 .delivery__price {
@@ -698,7 +699,6 @@ h4 {
 
 
 .delivery__form {
-	position: relative;
 	margin: 16px 0px 50px 0px;
 	background-color: #FFF;
 	display: flex;
@@ -769,7 +769,6 @@ h4 {
 	display: inline-block;
 	width: 20px;
 	height: 20px;
-	background-color: #ffffff;
 	border: 1px solid #978995;
 	border-radius: 8px;
 }
@@ -963,6 +962,187 @@ h4 {
 	fill: rgb(230, 66, 217)
 }
 
+.delivery__pay_modal {
+	padding: 0px 24px 24px 24px;
+	position: absolute;
+	display: flex;
+	flex-direction: column;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	border-radius: 16px;
+	box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.20);
+	width: 500px;
+	z-index: 100;
+	background-color: #FFF;
+}
+
+.delivery__pay_header {
+	font-size: 20px;
+	font-family: "SegoeUI-Bold";
+	display: flex;
+	justify-content: space-between;
+	padding: 16px 0px 13px 0px;
+	
+}
+
+.delivery__pay_navigation {
+	display: flex;
+	margin-bottom: 26px;
+	gap: 8px;
+}
+
+.delivery__pay_subtotal {
+	font-size: 13px;
+	font-family: "SegoeUI-Bold";
+}
+
+.delivery__pay_button {
+	cursor: pointer;
+	border-radius: 18px;
+	font-family: "SegoeUI-Bold";
+	width: 224px;
+	height: 36px;
+	border: 2px solid rgba(203, 17, 171, 0.15);
+	background-color: #FFF;
+}
+
+.delivery__pay_item {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 8px;
+}
+
+.form-delivery {
+	display: flex;
+	flex-direction: column;
+	margin: 12px 0px 57px 0px;
+	gap: 20px;
+}
+
+.delivery__pay_result {
+	font-family: "SegoeUI-Bold";
+	cursor: pointer;
+	height: 44px;
+	width: 164px;
+	color: #FFF;
+	background-color: #CB11AB;	
+	border-radius: 8px;
+	border: none;
+}
+
+.delivery__pay_background {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	background: rgba(5, 0, 10, 0.30);
+}
+
+.delivery__point_item {
+	display: flex;
+	flex-direction: column;
+}
+
+.delivery__pay_point {
+	display: flex;
+	align-items: center;
+	text-align: center;
+	justify-items: center;
+	margin-left: 26px;
+	gap: 8px;
+}
+
+.delivery__pay_point p span {
+	font-size: 13px;
+	color: #A0A0A4;
+}
+
+.delivery__point_position {
+	display: flex;
+	gap: 8px;
+	margin-bottom: 4px;
+}
+
+.delivery__point_input {
+ margin-right: 8px;
+}
+
+.delivery__point_position label {
+	display: flex;
+}
+
+.delivery__item_blocked {
+	pointer-events: none;
+}
+
+.trash__opacity {
+	fill: #978995;
+}
+
+.active {
+	border-color: rgb(201, 45, 219);
+}
+
+.delivery__delete {
+	border: none;
+	background-color: #FFF;
+}
+
+.delivery__text {
+	display: flex;
+}
+
+.delivery__subtotal {
+	display: flex;
+	width: 100%;
+}
+
+.delivery__parent {
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+}
+
+.delivery__card_modal {
+	padding: 0px 24px 24px 24px;
+	position: absolute;
+	display: flex;
+	flex-direction: column;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	border-radius: 16px;
+	box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.20);
+	width: 400px;
+	z-index: 100;
+	background-color: #FFF;
+}
+
+.delivery__card_background {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	background: rgba(5, 0, 10, 0.30)	 
+}
+
+.delivery__card {
+	display: flex;
+	gap: 8px;
+}
+
+.delivery__item_pictures {
+	margin: 0px 4px 0px 8px;
+}
 .none {
 	display: none;
-}	
+}
+
+.nones {
+	display: none;
+
+}
