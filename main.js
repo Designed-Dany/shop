@@ -10,6 +10,7 @@ let checkboxText = document.querySelector('.checkbox__text');
 let checkboxCart = document.getElementById('checkbox');
 let productMissing = document.querySelector('.product__hidden');
 let countBasketNumber = document.querySelector('.count-basket p')
+
 let countBasket = document.querySelector('.count-basket')
 let productNavigation = document.querySelectorAll('.product__navigation')
 
@@ -32,7 +33,6 @@ const outputBasket = document.querySelector('.basket_subtitle');
 let checkboxRadio = document.querySelectorAll('.delivery__input')
 const outputBasketCount = document.querySelector('.basket-counts_output')
 const deliveryDelete = document.querySelectorAll('.delivery__delete')
-
 
 function numberWithSpaces(x) {
   return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " "); // регулярка которая делит числа на разряды для удобства и читаемости больших сумм
@@ -175,10 +175,11 @@ const init = () => {
 				 	quantityTotalCost = 0;
 				 	sumDiscount.textContent = numberWithSpaces(totalCost - oldTotalCost)  //вывод разницы между старой и новой ценой
 
-				 	sumOldProducts.textContent = setOldTotalPrice(sumOldProducts.dataset.value - sumOldProducts.dataset.value);
-
-				 	totalPriceWrapper.textContent = setTotalPrice(totalPriceWrapper.dataset.value - totalPriceWrapper.dataset.value);
-
+					totalPriceWrapper.dataset.value = 0;
+					sumOldProducts.dataset.value = 0;
+				 	sumOldProducts.textContent = sumOldProducts.dataset.value;
+					totalPriceWrapper.textContent = totalPriceWrapper.dataset.value;
+				    
 				 	countBasketNumber.textContent = arrayCart.length - arrayCart.length;
 				 	arrayCart = []; // при клике на главный чекбокс массив становится пустой.
 
@@ -191,6 +192,9 @@ const init = () => {
 					document.querySelectorAll(".plus").forEach((plusItem) => {
 						plusItem.disabled = true;
 					})
+
+					allQuantityBasket.dataset.value = 0;
+					allQuantityBasket.textContent = allQuantityBasket.dataset.value;
 			}
 		} 
 	}
@@ -209,8 +213,6 @@ const init = () => {
 				const targetCheckbox = event.target
 			 
 				let input = targetCheckbox.closest('.product__item_active').querySelector(".inputs")
-
-				
 
 				if (childCheckboxs[i].checked == false) {
 					parentCheckbox.checked = false;
@@ -296,9 +298,15 @@ const calculateSeparateItem = (basketItem, action) => {
 			break; // заканчиваем проверку
 	}
 
-	basketItem.querySelector('.subtotal').textContent = numberWithSpaces(Math.round(getItemSubTotalPrice(input))) + " сом" // вывод подытога обычной цены
-	basketItem.querySelector('.subtotal-old').textContent = numberWithSpaces(Math.round(getItemOldTotalPrice(input))) + " сом" // вывод подытога старой цены
-}
+	basketItem.querySelectorAll('.subtotal').forEach((subtotalItem) => {
+		subtotalItem.textContent = numberWithSpaces(Math.round(getItemSubTotalPrice(input))) + " сом" // вывод подытога обычной цены
+	})
+	basketItem.querySelectorAll('.subtotal-old').forEach((subtotalItem) => {
+		subtotalItem.textContent = numberWithSpaces(Math.round(getItemOldTotalPrice(input))) + " сом" // вывод подытога старой цены
+	})
+	// basketItem.querySelector('.subtotal').textContent = numberWithSpaces(Math.round(getItemSubTotalPrice(input))) + " сом" // вывод подытога обычной цены
+	// basketItem.querySelector('.subtotal-old').textContent = numberWithSpaces(Math.round(getItemOldTotalPrice(input))) + " сом" // вывод подытога старой цены
+}	
 
 products.addEventListener('click', (event) => {
 	const targetProduct = event.target
@@ -690,50 +698,121 @@ selectCardInput = () => {
 })
 	})
 }
-
 selectCardInput()
 
-// checkboxRadio.forEach((radioItem) => {
-// 	const resultSelectPay = document.querySelector('.delivery__pay_result');
-// 	const resultSelectPoint = document.querySelector('.delivery__point_result');
-// 	const starIconDeliveryText = document.createElement('img')
-// 	starIconDeliveryText.src += radioItem.dataset.img // вывод звезды в способе оплаты
-// 	starIconDeliveryText.width = 12;
-// 	starIconDeliveryText.height = 12;
-// 	const outputSubtotal = document.querySelector('.delivery__subtotal')
-// 	// контролирует выбор на способе доставки курьером
-// 	resultSelectPay.addEventListener('click', () => {
+const phone = document.querySelector('.form__input_phone');
+const nameForm = document.querySelector('.form__input_name');
+const surname = document.querySelector('.form__input_surname');
+const email = document.querySelector('.form__input_email');
+const Inn = document.querySelector('.form__input_INN');
+const errorValidate = document.querySelectorAll('.error');
+const form = document.querySelector('.delivery__form');
 
-// 	if (radioItem.checked == true) {
-// 		outputDeliveryText.textContent = radioItem.dataset.text
-// 		outputBasketCount.textContent = radioItem.dataset.text
-// 		outputSubtotal.innerHTML = ''
-// 	}
 
-// 	outputText.textContent = "Доставит курьер"
-// 	outputBasket.textContent = "Доставка курьером"
-// 	document.querySelector('.delivery__pay_modal').classList.add('none')
-// 	document.querySelector('.delivery__pay_background').classList.add('none')
 
-// })
+const mask = new IMask(phone, {
+	mask: "+{0} 000 000-00-00",
+});
 
-// // контролирует выбор на способе доставки пункт выдачи
-// resultSelectPoint.addEventListener('click', () => {
 
-// 	if (radioItem.checked == true) {
-// 		outputDeliveryText.textContent = radioItem.dataset.text 
-// 		outputSubtotal.innerHTML = ` <img src="./images/star.svg"> ` + radioItem.dataset.rating + " Ежедневно с 10 до 21 "
-// 		outputBasketCount.textContent = radioItem.dataset.text 
-// 	} 
+
+const validateForm = () => {
+	const formInputs = document.querySelectorAll('.form__input');
+
 	
-// 	outputText.textContent = "В пункт выдачи"
-// 	outputBasket.textContent = "Доставка в пункт выдачи"
-// 	document.querySelector('.delivery__pay_modal').classList.add('none')
-// 	document.querySelector('.delivery__pay_background').classList.add('none')
+	formInputs.forEach((InputItems => {
+		InputItems.addEventListener('blur', (event) => {
+		let target = event.target;
+			if (target.classList.contains('form__input')) {
+				validateInputs();
+			}	
+		})
+	})
+)
+}
 
-// })
-// })
 
+// функция вывода ошибки
+const setError = (element, message) => {
+	// получаем родительский элемент
+	const inputControl = element.parentElement;
+	// получаем в каждом родительском элементе, блок вывода error
+	const errorDisplay = inputControl.querySelector('.error');
+
+	errorDisplay.innerText = message;
+	inputControl.classList.add('error');
+}
+
+const setSuccess = element => {
+	const inputControl = element.parentElement
+	const errorDisplay = inputControl.querySelector('.error');
+
+	errorDisplay.innerText = '';
+	inputControl.classList.remove('error');
+	inputControl.classList.add('success');
+}
+
+const isValidEmail = email => {
+	const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+	return re.test(String(email).toLowerCase());
+}
+const isValidPhone = phone => {
+	let regex = /^(\+9|\0\|)?[\s\-]?\(?[1234567890][0-9]{2}\)?[\s\-]?[0-9]{3}[\s\-]?[0-9]{2}[\s\-]?[0-9]{2}$/;
+	return regex.test(phone);
+}
+
+const isValidInn = Inn => {
+	const re = /^([0-9]{12})$/
+	return re.test(Inn)
+}
+
+const validateInputs = () => {
+	// получаем value каждого инпута и с помощью trim() удаляем все пробелы с начала и конца
+	const usernameValue = nameForm.value.trim(); 
+	const surnameValue = surname.value.trim(); 
+	const emailValue = email.value.trim(); 
+	const phoneValue = phone.value.trim(); 
+	const InnValue = Inn.value.trim(); 
+	
+
+	if (usernameValue == '') {
+		setError(nameForm, 'Укажите имя');
+	}else {
+		setSuccess(nameForm);
+	}	
+
+	if (surnameValue == '') {
+		setError(surname, 'Укажите фамилию');
+	}else {
+		setSuccess(surname);
+	}
+	
+	if (emailValue == '') {
+		setError(email, 'Укажите email');
+	}else if (!isValidEmail(emailValue)){
+		setError(email, 'Проверьте адрес электронной почты');
+	}	else { 
+		setSuccess(email);
+	}
+
+	if (phoneValue == '') {
+		setError(phone, 'Введите номер телефона');
+	}else if (!isValidPhone(phoneValue)) {
+		setError(phone, 'Формате: +9 999 999-99-99')
+	} else {
+		setSuccess(phone);
+	}	
+
+	if (InnValue == '') {
+		setError(Inn, 'Укажите ИНН');
+	}else if (!isValidInn(InnValue)) {
+		setError(Inn, 'Формате: |123456787899| 12 цифр')
+	} else {
+		setSuccess(Inn);
+	}
+}
+	
+validateForm()
 
 init();
 
