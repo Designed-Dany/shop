@@ -4,6 +4,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="/style.css">
+	<link rel="shortcut icon" href="/images/shop-icon.png">
 	<title>shop</title>
 </head>
 <body>
@@ -64,7 +65,8 @@
 											<input checked class='checkbox checkbox-child' type="checkbox" name="" id="">
 											<span class="custom-checkbox custom-checkbox__mobile"></span>
 										</label>
-										<img width='72' src="/images/productT-shirt.png" alt="">
+										<div class="product__checkboxIcon_start">
+											<img width='72' src="/images/productT-shirt.png" alt="">
 										<div class="product__text">
 											<div class="product__text_row">
 												<div class="product__price price">
@@ -96,6 +98,7 @@
 													</div>
 												</div>
 											</div>
+										</div>
 										</div>
 									</div>
 									<div class="product__navigation product__navigation_left">
@@ -138,12 +141,13 @@
 									</div>	
 								</div>
 								<div class="product__item_active product__item_delete product__row">
-										<div class="product__checkboxIcon product__item_marginTop">
+										<div class="product__checkboxIcon">
 											<label class='label__cart'>
 												<input checked class='checkbox checkbox-child' type="checkbox" name="" id="">
 												<span class="custom-checkbox custom-checkbox__mobile"></span>
 											</label>
-											<img width='72' src="/images/phone.png" alt="">
+											
+												<img class="product__img" width='72' src="/images/phone.png" alt="">
 											<div class="product__text">
 												<div class="product__text_row">
 													<div class="product__price price">
@@ -176,6 +180,8 @@
 													</div>
 												</div>
 											</div>
+											
+											
 										</div>
 										<div class="product__navigation">
 											<div class="product__button">
@@ -217,7 +223,8 @@
 													<input checked class='checkbox checkbox-child' type="checkbox" name="" id="">
 													<span class="custom-checkbox custom-checkbox__mobile"></span>
 												</label>
-												<img width='72' src="/images/pencils.png" alt="">
+												
+													<img class="product__img" width='72' src="/images/pencils.png" alt="">
 												<div class="product__text">
 													<div class="product__text_row">
 														<div class="product__price price">
@@ -247,6 +254,7 @@
 														</div>
 													</div>
 												</div>
+												
 											</div>
 											<div class="product__navigation">
 												<div class="product__button">
@@ -299,7 +307,7 @@
 							<div class='hr'><hr></div>
 						<div class="product__hidden">
 							<div class="product__item product__item_hidden product__row ">
-								<div class="product__checkboxIcon product__checkboxIcon_hidden">
+								<div class="product__checkboxIcon product__checkboxIcon_start">
 									<img width='72' src="/images/productT-shirtGrey.png" alt="">
 									<div class="product__text">
 								<div class="product__title">
@@ -325,7 +333,7 @@
 								</div>
 							</div>
 							<div class="product__row product__item_hidden">
-							<div class="product__checkboxIcon product__checkboxIcon_hidden">
+							<div class="product__checkboxIcon product__checkboxIcon_start">
 								<img width='72' src="/images/phoneGrey.png" alt="">
 								<div class="product__text">
 									<div class="product__title">
@@ -351,7 +359,7 @@
 							</div>
 							</div>
 							<div class="product__item_hidden">
-								<div class="product__checkboxIcon product__checkboxIcon_hidden">
+								<div class="product__checkboxIcon product__checkboxIcon_start">
 									<img width='72' src="/images/pencilsGrey.png" alt="">
 									<div class="product__text">
 										<div class="product__title">
@@ -560,27 +568,32 @@
 							</div>
 							<div class="form__group form__group_marginBottom">
 								<div class="input-control">
-									<input type='text' placeholder='Имя' for="name" class="form__input form__input_name">
+									<input type='text' for="name" class="form__input form__input_name">
+									<label class="placeholderForm">Имя</label>
 									<div class="error"></div>
 								</div>
 								<div class="input-control">
-									<input type='text' placeholder='Фамилия' class="form__input form__input_surname">
+									<input type='text' class="form__input form__input_surname">
+									<label class="placeholderForm">Фамилия</label>
 									<div class="error"></div>
 								</div>
 							</div>
 							<div class="form__group form__group_size">
 								<div class="input-control">
-								<input type='text' placeholder='Электронная почта' class="form__input form__input_email">
+								<input type='text' class="form__input form__input_email">
+								<label class="placeholderForm">Почта</label>
 								<div class="error"></div>
 								</div>
 								<div class="input-control">
-									<input type='text' placeholder='Телефон' class="form__input form__input_phone">
+									<input type='text' class="form__input form__input_phone">
+									<label class="placeholderForm">Телефон</label>
 								<div class="error error_margin"></div>
 								</div>
 								<div class="input-control">
-									<input type='text' placeholder='ИНН' class="form__input form__input_INN">
+									<input type='text' class="form__input form__input_INN">
+									<label class="placeholderForm">ИНН</label>
 									<div class="error"></div>
-									<label class='form__label' for="">Для таможенного оформления<label></label>
+									<label class='form__label' for="">Для таможенного оформления</label>
 								</div>
 							</div>	
 						</form>

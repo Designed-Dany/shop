@@ -719,13 +719,19 @@ const mask = new IMask(phone, {
 const validateForm = () => {
 	const formInputs = document.querySelectorAll('.form__input');
 
-	
 	formInputs.forEach((InputItems => {
+
 		InputItems.addEventListener('blur', (event) => {
 		let target = event.target;
 			if (target.classList.contains('form__input')) {
 				validateInputs();
-			}	
+			}
+			if (InputItems.value !== '') {
+				target.closest('.input-control').querySelector('.placeholderForm').classList.add('none')
+			} else {
+				target.closest('.input-control').querySelector('.placeholderForm').classList.remove('none')
+			}
+			 	
 		})
 	})
 )

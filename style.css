@@ -566,7 +566,7 @@ h4 {
 }
 
 .product__item_marginTop {
-	margin-bottom: 60px;
+	margin-bottom: 40px;
 }
 
 .product__item_marginBottom {
@@ -770,52 +770,23 @@ h4 {
 }
 
 .form__label {
+	color: black;
 	font-size: 12px;
 }
 
-.form__input_email:focus::placeholder {
-	transform: translateY(-20px);
-	transition: .3s;
-	font-size: 13px;
-}
-
-.form__input_name:focus::placeholder {
-	transform: translateY(-20px);
-	transition: .3s;
-	font-size: 13px;
-}
-
-.form__input_name {
+/* .form__input_name {
 	margin-right: 150px;
-}
-
-.form__input_surname:focus::placeholder {
-	transform: translateY(-20px);
-	transition: .3s;
-	font-size: 13px;
-}
-
+} */
 
 .form__input {
+	position: relative;
 	width: 100%;
 }
 
-.form__input_INN:focus::placeholder {
-	transform: translateY(-20px);
-	transition: .3s;
-	font-size: 13px;
-}
 
 .form__input {
 	padding-top: 40px;
 }
-
-.form__input_phone:focus::placeholder {
-	transform: translateY(-20px);
-	transition: .3s;
-	font-size: 13px;
-}
-
 
 .checkbox {
 	display: none;
@@ -827,8 +798,12 @@ h4 {
 	width: 20px;
 	height: 20px;
 	border: 1px solid #978995;
-	background-color: white;
-	border-radius: 8px;
+	background-color: inherit;
+	border-radius: 5px;
+}
+
+.product__img {
+	margin-bottom: 30px;
 }
 
 .custom-checkbox::before {
@@ -839,7 +814,7 @@ h4 {
 	display: block;
 	height: 20px;
 	width: 20px;
-	border-radius: 8px;
+	border-radius: 5px;
 	background-image: url(./images/checkboxIcon.svg);
 	background-position: center;
 	background-repeat: no-repeat;
@@ -896,9 +871,9 @@ h4 {
 .quantity-items_right {
 	outline: none;
 	border: none;
-	font-size: 16px;
-	padding-left: 5px;
-  width: 38px;
+	font-size: 13px;
+	padding-left: 10px;
+  width: 48px;
 	background-color: white;
 	color: black;
 }
@@ -1103,6 +1078,7 @@ h4 {
 	top: 0;
 	left: 0;
 	background: rgba(5, 0, 10, 0.30);
+	z-index: 2;
 }
 
 .delivery__point_item {
@@ -1280,6 +1256,7 @@ h4 {
 }
 
 .input-control {
+	position: relative;
 	width: 100%;
 }
 
@@ -1381,9 +1358,24 @@ h4 {
 	display: none;
 }
 
-.product__checkboxIcon_hidden {
+.product__checkboxIcon_start {
 	display: flex;
 	align-items: start;
+	gap: 12px;
+}
+
+.placeholderForm {
+	top: 35px;
+	left: 0;
+	position: absolute;
+	font-size: 16px;
+	color: #9797AF;
+}
+
+.form__input:focus~.placeholderForm {
+	transform: translateY(-20px);
+	transition: .3s;
+	font-size: 13px;
 }
 
 /* Адаптив тут */
@@ -1437,7 +1429,7 @@ h4 {
 		display: none;
 	}
 
-	.product__checkboxIcon_hidden {
+	.product__checkboxIcon_start {
 		display: flex;
 		align-items: start;
 	}
@@ -1505,7 +1497,7 @@ h4 {
 		margin-left: 39px;
 	 }
 
-	 .product__checkboxIcon_hidden {
+	 .product__checkboxIcon_start {
 		display: flex;
 		align-items: start;
 	}
@@ -1518,6 +1510,14 @@ h4 {
 }
 
 @media (max-width: 768px) {
+
+	.product__img {
+		margin-bottom: 0;
+	}
+	.quantity-items_right {
+		padding-left: 8px;
+    	width: 33px;
+	}
 
 	.product__adaptive_row {
 		display: flex;
@@ -1737,7 +1737,7 @@ h4 {
 		justify-content: flex-end;
 	}
 
-	.product__checkboxIcon_hidden {
+	.product__checkboxIcon_start {
 		display: flex;
 		align-items: start;
 	}
@@ -2137,7 +2137,7 @@ h4 {
 		margin: 0;
 	}
 
-	.product__checkboxIcon_hidden {
+	.product__checkboxIcon_start {
 		display: flex;
 		align-items: start;
 	}
